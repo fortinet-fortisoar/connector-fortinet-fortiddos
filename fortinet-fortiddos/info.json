@@ -1,0 +1,973 @@
+{
+  "name": "fortinet-fortiddos",
+  "version": "1.0.0",
+  "label": "Fortinet FortiDDoS",
+  "description": "FortiDDoS Protection Solution defends enterprise data centers against DDoS attacks by leveraging an extensive collection of known DDoS methodologies, creating a multi-layered approach to mitigate attacks.  It also analyzes the behavior of data to detect new attacks, allowing it to stop zero-day threats.",
+  "publisher": "Fortinet",
+  "cs_approved": true,
+  "cs_compatible": true,
+  "icon_small_name": "fortiddos_32x32.png",
+  "icon_large_name": "fortiddos_80x80.png",
+  "category": "Network Security",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server Address",
+        "type": "text",
+        "name": "server_address",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "description": "URL of the FortiDDoS appliance to which you will connect and perform automated operations."
+      },
+      {
+        "title": "Username",
+        "type": "text",
+        "name": "username",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "description": "Username to access your FortiDDoS appliance to which you will connect and perform automated operations."
+      },
+      {
+        "title": "Password",
+        "type": "password",
+        "name": "password",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "description": "Password to access your FortiDDoS appliance to which you will connect and perform automated operations."
+      },
+      {
+        "title": "Verify SSL",
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "required": false,
+        "visible": true,
+        "editable": true,
+        "value": true,
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "title": "Get SPP Settings",
+      "operation": "get_spp_settings",
+      "description": "Retrieves the service protection profile settings of the FortiDDoS appliance given the SPP name.",
+      "category": "investigation",
+      "annotation": "get_spp_settings",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "SPP Name",
+          "type": "text",
+          "name": "spp",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "SPP-0",
+          "tooltip": "Name of the service protection profile",
+          "description": "Name of the Service protection profile to get setting details."
+        },
+        {
+          "title": "Resource Name",
+          "type": "select",
+          "name": "resource_name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "ddos_spp_setting",
+          "options": [
+            "ddos_spp_setting",
+            "ddos_spp_firewall_service",
+            "ddos_spp_firewall_policy",
+            "ddos_spp_firewall_address",
+            "ddos_spp_firewall_address6",
+            "ddos_spp_tcp_session_extended_timeout_policy",
+            "ddos_spp_threshold_scalar",
+            "ddos_spp_threshold_http_methods",
+            "ddos_spp_threshold_protocol",
+            "ddos_spp_threshold_tcp_ports",
+            "ddos_spp_threshold_udp_ports",
+            "ddos_spp_threshold_icmp_type_codes",
+            "ddos_spp_threshold_http_urls",
+            "ddos_spp_threshold_http_hosts",
+            "ddos_spp_threshold_http_referers",
+            "ddos_spp_threshold_http_cookies",
+            "ddos_spp_threshold_http_user_agents"
+          ],
+          "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: ddos_spp_setting, ddos_spp_firewall_service, ddos_spp_firewall_policy, ddos_spp_firewall_address, ddos_spp_firewall_address6, ddos_spp_tcp_session_extended_timeout_policy, ddos_spp_threshold_scalar, ddos_spp_threshold_http_methods, ddos_spp_threshold_protocol, ddos_spp_threshold_tcp_ports, ddos_spp_threshold_udp_ports, ddos_spp_threshold_icmp_type_codes, ddos_spp_threshold_http_urls, ddos_spp_threshold_http_hosts, ddos_spp_threshold_http_referers, ddos_spp_threshold_http_cookies, ddos_spp_threshold_http_user_agents."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "title": "Get Global Settings",
+      "operation": "get_global_settings",
+      "description": "Retrieves the global settings of the FortiDDoS appliance.",
+      "category": "investigation",
+      "annotation": "get_global_settings",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Resource Name",
+          "type": "select",
+          "name": "resource_name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "ddos_global_setting",
+          "options": [
+            "ddos-global-spp-switching-policy",
+            "ddos-global-spp-policy",
+            "ddos_global_spp_policy_group",
+            "ddos_global_setting",
+            "ddos_global_http_service_ports",
+            "ddos_global_udp_service_ports",
+            "ddos_global_sp_fdd",
+            "ddos_global_service_provider_address",
+            "ddos_global_ip_reputation",
+            "ddos_global_domain_reputation",
+            "ddos_global_proxy_ip",
+            "ddos_global_proxyip_policy",
+            "ddos_global_firewall_local_address",
+            "ddos_global_firewall_local_address6",
+            "ddos_global_firewall_address",
+            "ddos_global_firewall_address6",
+            "ddos_global_do_not_track_policy",
+            "ddos_global_do_not_track_policy6",
+            "ddos_global_firewall_policy",
+            "ddos_global_firewall_policy6",
+            "ddos_global_distress_acl",
+            "ddos_global_bypass_macs"
+          ],
+          "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: ddos-global-spp-switching-policy, ddos-global-spp-policy, ddos_global_spp_policy_group, ddos_global_setting, ddos_global_http_service_ports, ddos_global_udp_service_ports, ddos_global_sp_fdd, ddos_global_service_provider_address, ddos_global_ip_reputation, ddos_global_domain_reputation, ddos_global_proxy_ip, ddos_global_proxyip_policy, ddos_global_firewall_local_address, ddos_global_firewall_local_address6, ddos_global_firewall_address, ddos_global_firewall_address6, ddos_global_do_not_track_policy, ddos_global_do_not_track_policy6, ddos_global_firewall_policy, ddos_global_firewall_policy6, ddos_global_distress_acl, ddos_global_bypass_macs"
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "title": "Get System Settings",
+      "operation": "get_system_settings",
+      "description": "Retrieves the system settings information from FortiDDoS.",
+      "category": "investigation",
+      "annotation": "get_system_settings",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Resource Name",
+          "type": "select",
+          "name": "resource_name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "interface",
+          "options": [
+            "interface",
+            "dns",
+            "route",
+            "HA",
+            "snmp_sysinfo",
+            "snmp_threshold",
+            "snmp_community",
+            "auth_radius",
+            "auth_LDAP",
+            "auth_tacacsplus",
+            "adminuser",
+            "accprofile",
+            "sysglobal",
+            "certificate_local"
+          ],
+          "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: interface, dns, route, HA, snmp_sysinfo, snmp_threshold, snmp_community, auth_radius, auth_LDAP, auth_tacacsplus, adminuser, accprofile, sysglobal, certificate_local"
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "title": "Get Log Settings",
+      "operation": "get_log_settings",
+      "description": "Retrieves log information from the FortiDDoS.",
+      "category": "investigation",
+      "annotation": "get_log_settings",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Resource Name",
+          "type": "select",
+          "name": "resource_name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "log_local",
+          "options": [
+            "log_local",
+            "log_remote",
+            "log_setting_ddos_attack_remote",
+            "ddos_global_attack_event_purge",
+            "log_setting_snmp_trap_receivers",
+            "log_report",
+            "ddos_global_attack_report_purge",
+            "log_setting_remote_log_settings",
+            "alertemail_recipient",
+            "alertemail_server",
+            "alertemail_setting"
+          ],
+          "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: log_local, log_remote, log_setting_ddos_attack_remote, ddos_global_attack_event_purge, log_setting_snmp_trap_receivers, log_report, ddos_global_attack_report_purge, log_setting_remote_log_settings, alertemail_recipient, alertemail_server, alertemail_setting"
+        }
+      ]
+    },
+    {
+      "title": "Get Attack Information",
+      "operation": "get_attack_information",
+      "description": "Retrieves attack information from FortiDDoS based on the SPP, Direction and Period you have specified.",
+      "category": "investigation",
+      "annotation": "get_attack_information",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "SPP",
+          "type": "text",
+          "name": "spp_name",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "SPP-0",
+          "tooltip": "Name of the service protection profile",
+          "description": "Name of the Service protection profile to get attack information."
+        },
+        {
+          "title": "Direction",
+          "type": "select",
+          "name": "dir",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "Inbound",
+          "options": [
+            "Inbound",
+            "Outbound"
+          ],
+          "description": "Specify direction to retrieves attack information from FortiDDoS. You can choose between: Inbound or Outbound."
+        },
+        {
+          "title": "Period",
+          "type": "select",
+          "name": "period",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "1 year",
+          "options": [
+            "1 hour",
+            "8 hours",
+            "1 day",
+            "1 week",
+            "1 month",
+            "1 year"
+          ],
+          "description": "Specify period to retrieves attack information from FortiDDoS. You can choose between: 1 hour, 8 hours, 1 day, 1 week, 1 month or 1 year."
+        },
+        {
+          "title": "Subtype",
+          "type": "select",
+          "name": "subtype",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "top_attacks",
+          "options": [
+            "top_attacks",
+            "top_attackers",
+            "top_acl_attacks",
+            "top_attacked_spps",
+            "top_attacked_acl_spps",
+            "top_attacked_subnets",
+            "top_acl_subnets",
+            "top_attacked_destinations",
+            "top_attacked_protocols",
+            "top_attacked_tcp_ports",
+            "top_attacked_udp_ports",
+            "top_attacked_icmp_type_codes",
+            "top_attacked_http_methods",
+            "top_attacked_http_cookies",
+            "top_attacked_http_referers",
+            "top_attacked_http_user_agents",
+            "top_attacked_http_hosts",
+            "top_attacked_http_urls",
+            "top_attacked_dns_servers",
+            "top_attacked_dns_anomalies"
+          ],
+          "description": "Specify period to retrieves attack information from FortiDDoS. You can choose between: top_attacks, top_attackers, top_acl_attacks, top_attacked_spps, top_attacked_acl_spps, top_attacked_subnets, top_acl_subnets, top_attacked_destinations, top_attacked_protocols, top_attacked_tcp_ports, top_attacked_udp_ports, top_attacked_icmp_type_codes, top_attacked_http_methods, top_attacked_http_cookies, top_attacked_http_referers, top_attacked_http_user_agents, top_attacked_http_hosts, top_attacked_http_urls, top_attacked_dns_servers, top_attacked_dns_anomalies."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "title": "Add Distress ACL",
+      "operation": "add_distress_acl",
+      "description": "Add a new Distress ACL in FortiDDoS based on the parameters you have specified.",
+      "category": "remediation",
+      "annotation": "add_distress_acl",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "MKey",
+          "type": "text",
+          "name": "mkey",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "MKey Name to add a new SPP to the FortiDDoS."
+        },
+        {
+          "title": "ACL Enable",
+          "type": "checkbox",
+          "name": "acl-enable",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "description": "Select ACL enable to add a new Distress ACL into the FortiDDoS."
+        },
+        {
+          "title": "Destination",
+          "type": "select",
+          "name": "destination",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "options": [
+            "ip-netmask-ipv4",
+            "all"
+          ],
+          "value": "all",
+          "onchange": {
+            "ip-netmask-ipv4": [
+              {
+                "title": "Destination IPv4 Netmask",
+                "type": "text",
+                "name": "destination-ipv4-netmask",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "placeholder": "eg. 0.0.0.0/0",
+                "description": "Specify Destination IPv4 Netmask to add a new Distress ACL into the FortiDDoS."
+              }
+            ],
+            "all": [
+              {
+                "title": "Destination IPv4 Netmask",
+                "type": "text",
+                "name": "destination-ipv4-netmask",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "value": "0.0.0.0/0",
+                "description": "Specify Destination IPv4 Netmask to add a new Distress ACL into the FortiDDoS."
+              },
+              {
+                "title": "SPP Name",
+                "type": "text",
+                "name": "spp",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "SPP-0",
+                "description": "Specify SPP name to add a new Distress ACL into the FortiDDoS."
+              }
+            ]
+          },
+          "description": "Select destination to add a new Distress ACL in FortiDDoS. You can choose between: ip-netmask-ipv4, or all."
+        },
+        {
+          "title": "Destination Port",
+          "type": "checkbox",
+          "name": "destination-port",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "Destination Port Start",
+                "type": "text",
+                "name": "destination-port-start",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "description": "Specify destination port start to add a new Distress ACL in FortiDDoS."
+              },
+              {
+                "title": "Destination Port End",
+                "type": "text",
+                "name": "destination-port-end",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "description": "Specify destination port end to add a new Distress ACL in FortiDDoS."
+              }
+            ],
+            "false": [
+              {
+                "title": "Threshold Per Million",
+                "type": "text",
+                "name": "threshold-per-million",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "1000000",
+                "description": "Specify threshold per million to add a new Distress ACL in FortiDDoS."
+              }
+            ]
+          },
+          "description": "Select this destination port checkbox to add a new Distress ACL in FortiDDoS. If you select this checkbox, then you must specify the following parameter: Destination Port Start, Destination Port End. If you do not select this checkbox specify: Threshold Per Million"
+        },
+        {
+          "title": "DSCP",
+          "type": "checkbox",
+          "name": "dscp",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "DSCP Value",
+                "type": "text",
+                "name": "dscp-value",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "description": "Specify DSCP value to add a new Distress ACL in FortiDDoS."
+              }
+            ]
+          },
+          "description": "Select this DSCP checkbox to add a new Distress ACL in FortiDDoS. If you select this checkbox, then you must specify the following parameter: DSCP Value"
+        },
+        {
+          "title": "Fragment",
+          "type": "checkbox",
+          "name": "fragment",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "Fragment Type",
+                "type": "select",
+                "name": "fragment-type",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "value": null,
+                "options": [
+                  "first-fragment",
+                  "non-fragment-or-first-fragment",
+                  "not-first-fragment",
+                  "any-fragment"
+                ]
+              }
+            ]
+          },
+          "description": "Select this fragment checkbox to add a new Distress ACL in FortiDDoS. If you select this checkbox, then you must specify the following parameter: Fragment Type"
+        },
+        {
+          "title": "Protocol",
+          "type": "checkbox",
+          "name": "protocol",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "Protocol Number",
+                "type": "text",
+                "name": "protocol-number",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "description": "Specify protocol number to add a new Distress ACL in FortiDDoS."
+              }
+            ]
+          },
+          "description": "Select this protocol checkbox to add a new Distress ACL in FortiDDoS. If you select this checkbox, then you must specify the following parameter: Protocol Number."
+        },
+        {
+          "title": "Source IP",
+          "type": "checkbox",
+          "name": "source-ip",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "Source IPv4 Netmask",
+                "type": "text",
+                "name": "source-ipv4-netmask",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "description": "Specify Source IPv4 Netmask to add a new Distress ACL in FortiDDoS."
+              }
+            ]
+          },
+          "description": "Select this source IP checkbox to add a new Distress ACL in FortiDDoS. If you select this checkbox, then you must specify the following parameter: Source IPv4 Netmask."
+        },
+        {
+          "title": "Source Port",
+          "type": "checkbox",
+          "name": "source-port",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "Source Port Start",
+                "type": "text",
+                "name": "source-port-start",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              },
+              {
+                "title": "Source Port End",
+                "type": "text",
+                "name": "source-port-end",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "value": ""
+              }
+            ]
+          },
+          "description": "Select this source port checkbox to add a new Distress ACL in FortiDDoS. If you select this checkbox, then you must specify the following parameter: Source Port Start and Source Port End."
+        },
+        {
+          "title": "TCP Control Flag",
+          "type": "checkbox",
+          "name": "tcp-control-flag",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "TCP Control Flag Options",
+                "type": "text",
+                "name": "tcp-control-flag-options",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "description": "Specify TCP control flag options to add a new Distress ACL in FortiDDoS."
+              }
+            ]
+          },
+          "description": "Select this TCP control flag checkbox to add a new Distress ACL in FortiDDoS. If you select this checkbox, then you must specify the following parameter: TCP Control Flag Options."
+        },
+        {
+          "title": "TTL",
+          "type": "checkbox",
+          "name": "ttl",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "TTL Value",
+                "type": "text",
+                "name": "ttl-value",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "description": "Specify TTL Value to add a new Distress ACL in FortiDDoS."
+              }
+            ]
+          },
+          "description": "Select this TTL checkbox to add a new Distress ACL in FortiDDoS. If you select this checkbox, then you must specify the following parameter: TTL Value."
+        }
+      ]
+    },
+    {
+      "title": "Add Service Protection Profile Policy",
+      "operation": "add_service_protection_profile_policy",
+      "description": "Adds a new SPP to the FortiDDoS based on the input parameters you have specified.",
+      "category": "remediation",
+      "annotation": "add_service_protection_profile_policy",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Subnet ID",
+          "type": "text",
+          "name": "subnet-id",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "Subnet ID to add a new SPP to the FortiDDoS."
+        },
+        {
+          "title": "MKey Name",
+          "type": "text",
+          "name": "mkey",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "MKey Name to add a new SPP to the FortiDDoS."
+        },
+        {
+          "title": "IP Version",
+          "type": "select",
+          "name": "ip-version",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "IPv4",
+          "options": [
+            "IPv4",
+            "IPv6"
+          ],
+          "onchange": {
+            "IPv4": [
+              {
+                "title": "IPv4/Netmask",
+                "type": "text",
+                "name": "ip-addr-mask",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "description": "IPv4/Netmask to add a new SPP policy to the FortiDDoS."
+              }
+            ],
+            "IPv6": [
+              {
+                "title": "IPv6/Prefix",
+                "type": "text",
+                "name": "ipv6-addr-prefix",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "description": "IPv6/Prefix to add a new SPP policy to the FortiDDoS."
+              }
+            ]
+          },
+          "description": "Select this P version to add a new SPP policy in FortiDDoS. If you select IPv4 option, then you must specify the following parameter: IPv4/Netmask. If you select IPv6 option, then you must specify the following parameter: IPv6/Prefix."
+
+        },
+        {
+          "title": "SPP",
+          "type": "text",
+          "name": "spp",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "SPP-0",
+          "tooltip": "Name of the service protection profile",
+          "description": "Name of the Service protection profile add a new SPP policy to the FortiDDoS."
+        },
+        {
+          "title": "Alternate SPP Enable",
+          "type": "checkbox",
+          "name": "alt-spp-enable",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "onchange": {
+            "true": [
+              {
+                "title": "Alternate SPP",
+                "type": "text",
+                "name": "alt-spp",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "SPP-0",
+                "description": "Specify Alternate SPP to add a new SPP policy in FortiDDoS."
+              },
+              {
+                "title": "Threshold Per Million",
+                "type": "text",
+                "name": "threshold-per-million",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "1000000",
+                "description": "Specify threshold per million to add a new SPP policy in FortiDDoS."
+              }
+            ],
+            "false": [
+              {
+                "title": "Threshold Per Million",
+                "type": "text",
+                "name": "threshold-per-million",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "1000000",
+                "description": "Specify threshold per million to add a new SPP policy in FortiDDoS."
+              }
+            ]
+          },
+          "description": "Select this Alternate SPP Enable checkbox to add a new SPP policy to the FortiDDoS. If you select this checkbox, then you must specify the following parameter: Alternate SPP and Threshold Per Million. If you do not select this checkbox, then you must specify the following parameter: Threshold Per Million. "
+        },
+        {
+          "title": "Comment",
+          "type": "text",
+          "name": "comment",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "Added via FortiSOAR",
+          "description": "Specify comment at the time of add a new SPP policy in FortiDDoS."
+        }
+      ]
+    },
+    {
+      "title": "Update Service Protection Profile Settings",
+      "operation": "update_service_protection_profile_settings",
+      "description": "Update Service Protection Profile Settings (SPP) based on the inputs provided.",
+      "category": "remediation",
+      "annotation": "update_service_protection_profile_settings",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "SPP Name",
+          "type": "text",
+          "name": "spp",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "SPP-0",
+          "tooltip": "Name of the service protection profile",
+          "description": "Name of the Service protection profile to update SPP settings."
+        },
+        {
+          "title": "Resource Name",
+          "type": "select",
+          "name": "resource_name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "ddos_spp_setting",
+          "options": [
+            "ddos_spp_setting",
+            "ddos_spp_firewall_service",
+            "ddos_spp_firewall_policy",
+            "ddos_spp_firewall_address",
+            "ddos_spp_firewall_address6",
+            "ddos_spp_tcp_session_extended_timeout_policy",
+            "ddos_spp_threshold_scalar",
+            "ddos_spp_threshold_http_methods",
+            "ddos_spp_threshold_protocol",
+            "ddos_spp_threshold_tcp_ports",
+            "ddos_spp_threshold_udp_ports",
+            "ddos_spp_threshold_icmp_type_codes",
+            "ddos_spp_threshold_http_urls",
+            "ddos_spp_threshold_http_hosts",
+            "ddos_spp_threshold_http_referers",
+            "ddos_spp_threshold_http_cookies",
+            "ddos_spp_threshold_http_user_agents"
+          ],
+          "description": "Specify the name of the resource whose setting you want to update.\nFollowing are possible resource names: ddos_spp_setting, ddos_spp_firewall_service, ddos_spp_firewall_policy, ddos_spp_firewall_address, ddos_spp_firewall_address6, ddos_spp_tcp_session_extended_timeout_policy, ddos_spp_threshold_scalar, ddos_spp_threshold_http_methods, ddos_spp_threshold_protocol, ddos_spp_threshold_tcp_ports, ddos_spp_threshold_udp_ports, ddos_spp_threshold_icmp_type_codes, ddos_spp_threshold_http_urls, ddos_spp_threshold_http_hosts, ddos_spp_threshold_http_referers, ddos_spp_threshold_http_cookies, ddos_spp_threshold_http_user_agents."
+        },
+        {
+          "title": "SPP Settings Arguments",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "json",
+          "name": "parameter_name_val",
+          "tooltip": "SPP settings arguments in json format",
+          "placeholder": "{\"field1\":value1, \"field2\":value2}",
+          "value": {"inbound-operating-mode":  "prevention"},
+          "description": "Specify SPP setting arguments in JSON format at the time of update the SPP setting. You can enter the arguments in the following format: {\"field1\":value1, \"field2\":value2}. Eg: {\"inbound-operating-mode\":  \"prevention\"}"
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "title": "Add Legitimate DNS Query",
+      "operation": "add_lq",
+      "description": "Adds a new Legitimate DNS Query to the FortiDDoS based on the input parameters you have specified.",
+      "category": "remediation",
+      "annotation": "add_lq",
+      "enabled": true,
+      "output_schema": {
+        "data": "",
+        "success": "",
+        "message": ""
+      },
+      "parameters": [
+        {
+          "title": "Query",
+          "type": "text",
+          "name": "query",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "Specify Query to add a new Legitimate DNS Query into the FortiDDoS."
+        },
+        {
+          "title": "Type",
+          "type": "text",
+          "name": "type",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "1",
+          "description": "Specify type to add a new Legitimate DNS Query into the FortiDDoS."
+        },
+        {
+          "title": "Class",
+          "type": "text",
+          "name": "class",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "1",
+          "description": "Specify class to add a new Legitimate DNS Query into the FortiDDoS."
+        }
+      ]
+    },
+    {
+      "title": "Delete Legitimate DNS Query",
+      "operation": "delete_lq",
+      "description": "Deletes legitimate DNS query from a specific from FortiDDoS based on the Domain and Type you have specified.",
+      "category": "remediation",
+      "annotation": "delete_lq",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Domain",
+          "description": "Specify domain for which you want to delete legitimate DNS query.",
+          "type": "text",
+          "name": "query",
+          "required": true,
+          "visible": true,
+          "editable": true
+        },
+        {
+          "title": "Type",
+          "description": "Specify type for which you want to delete legitimate DNS query.",
+          "type": "text",
+          "name": "type",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "1"
+        },
+        {
+          "title": "Class",
+          "type": "text",
+          "name": "class",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "1",
+          "description": "Specify class for which you want to delete legitimate DNS query."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "title": "Delete Service Protection Profile Policy",
+      "operation": "delete_service_protection_profile_policy",
+      "description": "Delete Service Protection Profile Policy based on the given policy name",
+      "category": "remediation",
+      "annotation": "delete_service_protection_profile_policy",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "SPP Policy Name",
+          "description": "Specify the name of the policy which you want to delete.",
+          "type": "text",
+          "name": "policy_name",
+          "required": true,
+          "visible": true,
+          "editable": true
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "title": "Delete Distress ACL",
+      "operation": "delete_distress_acl",
+      "description": "Delete Distress ACL based on the name you have provided.",
+      "category": "remediation",
+      "annotation": "delete_distress_acl",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Distress ACL Name",
+          "description": "Specify the name of the distress ACL.",
+          "type": "text",
+          "name": "name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "The name of the distress ACL which you want to delete."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "title": "Generate BGP Flowspec",
+      "operation": "generate_bgp_flowspec",
+      "description": "Generate BGP flow specifications based on the input you have provided.",
+      "category": "containment",
+      "annotation": "generate_bgp_flowspec",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Vendor",
+          "description": "Specify the vendor. The available options are Cisco and Juniper.",
+          "type": "select",
+          "name": "vendor",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": null,
+          "options": [
+            "Cisco",
+            "Juniper"
+          ]
+        },
+        {
+          "title": "Destination",
+          "description": "Specify the destination under attack.",
+          "type": "text",
+          "name": "destination",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "IPv4 Address"
+        },
+        {
+          "title": "Threshold",
+          "description": "Specify the threshold to generate BGP flow specifications.",
+          "type": "integer",
+          "name": "threshold",
+          "required": true,
+          "visible": true,
+          "editable": true
+        }
+      ],
+      "output_schema": {}
+    }
+  ]
+}

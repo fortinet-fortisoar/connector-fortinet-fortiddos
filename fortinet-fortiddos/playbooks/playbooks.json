@@ -1,0 +1,1103 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "36a149e6-0628-4d5a-b1ee-004f68e1fad3",
+      "@type": "WorkflowCollection",
+      "name": "Sample - Fortinet FortiDDoS - 1.0.0",
+      "description": "FortiDDoS Protection Solution defends enterprise data centers against DDoS attacks by leveraging an extensive collection of known DDoS methodologies, creating a multi-layered approach to mitigate attacks.  It also analyzes the behavior of data to detect new attacks, allowing it to stop zero-day threats.",
+      "visible": true,
+      "image": "fortiddos_100x100.png",
+      "recordTags": [
+        "Fortinet",
+        "fortinet-fortiddos"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "d0b72d78-5f65-44ee-8381-40fd4e4680e7",
+          "collection": "/api/3/workflow_collections/36a149e6-0628-4d5a-b1ee-004f68e1fad3",
+          "triggerLimit": null,
+          "description": "Retrieves the service protection profile settings of the FortiDDoS appliance given the SPP name.",
+          "name": "Get SPP Settings",
+          "tag": "#Fortinet FortiDDoS",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiddos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/185081a8-b7dc-4b3a-b925-871ffb895f26",
+          "steps": [
+            {
+              "uuid": "185081a8-b7dc-4b3a-b925-871ffb895f26",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "7faebac5-ac68-442a-8b47-169cafc7e1c2",
+                "title": "Fortinet FortiDDoS: Get SPP Settings",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "0b2e8cad-dfda-48cb-9ba7-870f165f0b4d",
+              "@type": "WorkflowStep",
+              "name": "Get SPP Settings",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiDDoS",
+                "config": "",
+                "params": {
+                  "spp": "SPP-0",
+                  "resource_name": "ddos_spp_setting"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiddos",
+                "operation": "get_spp_settings",
+                "operationTitle": "Get SPP Settings",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "18917271-459f-4e5c-886f-6b5725072b47",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get SPP Settings",
+              "sourceStep": "/api/3/workflow_steps/185081a8-b7dc-4b3a-b925-871ffb895f26",
+              "targetStep": "/api/3/workflow_steps/0b2e8cad-dfda-48cb-9ba7-870f165f0b4d"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "71988839-947a-46cf-81e2-fd37e7e2f8e2",
+          "collection": "/api/3/workflow_collections/36a149e6-0628-4d5a-b1ee-004f68e1fad3",
+          "triggerLimit": null,
+          "description": "Retrieves the global settings of the FortiDDoS appliance.",
+          "name": "Get Global Settings",
+          "tag": "#Fortinet FortiDDoS",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiddos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/94089e59-570a-402d-a203-43355300ed08",
+          "steps": [
+            {
+              "uuid": "94089e59-570a-402d-a203-43355300ed08",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "b59544a7-c0ce-4546-bd3c-f272443554a0",
+                "title": "Fortinet FortiDDoS: Get Global Settings",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "6336b740-c4e1-4d33-80e4-dcc48abb5036",
+              "@type": "WorkflowStep",
+              "name": "Get Global Settings",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiDDoS",
+                "config": "",
+                "params": {
+                  "resource_name": "ddos_global_setting"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiddos",
+                "operation": "get_global_settings",
+                "operationTitle": "Get Global Settings",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "64b9ba22-b077-4b7e-8c6d-1cd7472fdf83",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Global Settings",
+              "sourceStep": "/api/3/workflow_steps/94089e59-570a-402d-a203-43355300ed08",
+              "targetStep": "/api/3/workflow_steps/6336b740-c4e1-4d33-80e4-dcc48abb5036"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "12231730-7418-4e09-87e8-435c18b2b727",
+          "collection": "/api/3/workflow_collections/36a149e6-0628-4d5a-b1ee-004f68e1fad3",
+          "triggerLimit": null,
+          "description": "Retrieves the system settings information from FortiDDoS.",
+          "name": "Get System Settings",
+          "tag": "#Fortinet FortiDDoS",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiddos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/efa9037a-5a22-440b-8b56-f6c0c2977970",
+          "steps": [
+            {
+              "uuid": "efa9037a-5a22-440b-8b56-f6c0c2977970",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "bfeb44c7-9355-422a-a5a3-53562fc0b2ae",
+                "title": "Fortinet FortiDDoS: Get System Settings",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "c29a7f9e-26da-48ea-ac27-92f62ab271a7",
+              "@type": "WorkflowStep",
+              "name": "Get System Settings",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiDDoS",
+                "config": "",
+                "params": {
+                  "resource_name": "interface"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiddos",
+                "operation": "get_system_settings",
+                "operationTitle": "Get System Settings",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "e2d2511a-0224-4a9d-b4cb-d6bf68007221",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get System Settings",
+              "sourceStep": "/api/3/workflow_steps/efa9037a-5a22-440b-8b56-f6c0c2977970",
+              "targetStep": "/api/3/workflow_steps/c29a7f9e-26da-48ea-ac27-92f62ab271a7"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "df12524c-af54-41ab-ab6e-5991fdc30a43",
+          "collection": "/api/3/workflow_collections/36a149e6-0628-4d5a-b1ee-004f68e1fad3",
+          "triggerLimit": null,
+          "description": "Retrieves log information from the FortiDDoS.",
+          "name": "Get Log Settings",
+          "tag": "#Fortinet FortiDDoS",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiddos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/aa91d159-958f-420b-8148-b1cded7009a1",
+          "steps": [
+            {
+              "uuid": "aa91d159-958f-420b-8148-b1cded7009a1",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "52936231-be30-4417-a3b2-e32567fa85ff",
+                "title": "Fortinet FortiDDoS: Get Log Settings",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "a521b943-5f68-4e00-9350-9c433cd81a3a",
+              "@type": "WorkflowStep",
+              "name": "Get Log Settings",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiDDoS",
+                "config": "",
+                "params": {
+                  "resource_name": "log_local"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiddos",
+                "operation": "get_log_settings",
+                "operationTitle": "Get Log Settings",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "00290594-ba2b-4b25-82b2-64cfb5c23856",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Log Settings",
+              "sourceStep": "/api/3/workflow_steps/aa91d159-958f-420b-8148-b1cded7009a1",
+              "targetStep": "/api/3/workflow_steps/a521b943-5f68-4e00-9350-9c433cd81a3a"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "d6d7e5ea-77be-424e-a9ae-311bea0748ff",
+          "collection": "/api/3/workflow_collections/36a149e6-0628-4d5a-b1ee-004f68e1fad3",
+          "triggerLimit": null,
+          "description": "Retrieves attack information from FortiDDoS based on the SPP, Direction and Period you have specified.",
+          "name": "Get Attack Information",
+          "tag": "#Fortinet FortiDDoS",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiddos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/5f4d7844-7ae9-4486-a342-c672c4092371",
+          "steps": [
+            {
+              "uuid": "5f4d7844-7ae9-4486-a342-c672c4092371",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "841fe1b6-6c8b-4e78-96a6-405408fdd536",
+                "title": "Fortinet FortiDDoS: Get Attack Information",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "7efa893c-cb01-4a48-9dc3-9342a7e72fa8",
+              "@type": "WorkflowStep",
+              "name": "Get Attack Information",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiDDoS",
+                "config": "",
+                "params": {
+                  "spp_name": "SPP-0",
+                  "dir": "Inbound",
+                  "period": "1 year",
+                  "subtype": "top_attacks"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiddos",
+                "operation": "get_attack_information",
+                "operationTitle": "Get Attack Information",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "59af01ec-bfed-407f-8965-ef7c72d3617e",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Attack Information",
+              "sourceStep": "/api/3/workflow_steps/5f4d7844-7ae9-4486-a342-c672c4092371",
+              "targetStep": "/api/3/workflow_steps/7efa893c-cb01-4a48-9dc3-9342a7e72fa8"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "8d749a63-56ce-4601-92d3-49e395045d75",
+          "collection": "/api/3/workflow_collections/36a149e6-0628-4d5a-b1ee-004f68e1fad3",
+          "triggerLimit": null,
+          "description": "Add a new Distress ACL in FortiDDoS based on the parameters you have specified.",
+          "name": "Add Distress ACL",
+          "tag": "#Fortinet FortiDDoS",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiddos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/5d9891c0-4d7a-48a9-9e79-08b7f130d14d",
+          "steps": [
+            {
+              "uuid": "5d9891c0-4d7a-48a9-9e79-08b7f130d14d",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "ffbb31dd-a50d-4685-99b9-39fb8abd4575",
+                "title": "Fortinet FortiDDoS: Add Distress ACL",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "b7571d90-72ba-4a5f-bebc-7fbda5ec498b",
+              "@type": "WorkflowStep",
+              "name": "Add Distress ACL",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiDDoS",
+                "config": "",
+                "params": {
+                  "acl-enable": false,
+                  "destination": "all",
+                  "destination-port": false,
+                  "dscp": false,
+                  "fragment": false,
+                  "protocol": false,
+                  "source-ip": false,
+                  "source-port": false,
+                  "tcp-control-flag": false,
+                  "ttl": false
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiddos",
+                "operation": "add_distress_acl",
+                "operationTitle": "Add Distress ACL",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "cbd40655-c0ec-4024-b92f-375d3e9e3336",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Add Distress ACL",
+              "sourceStep": "/api/3/workflow_steps/5d9891c0-4d7a-48a9-9e79-08b7f130d14d",
+              "targetStep": "/api/3/workflow_steps/b7571d90-72ba-4a5f-bebc-7fbda5ec498b"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "f9d5a41e-4d84-4df1-8d19-dc496a873ed9",
+          "collection": "/api/3/workflow_collections/36a149e6-0628-4d5a-b1ee-004f68e1fad3",
+          "triggerLimit": null,
+          "description": "Adds a new SPP to the FortiDDoS based on the input parameters you have specified.",
+          "name": "Add Service Protection Profile Policy",
+          "tag": "#Fortinet FortiDDoS",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiddos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/2795562d-02e3-4a79-b6e5-d63b3f7c7eee",
+          "steps": [
+            {
+              "uuid": "2795562d-02e3-4a79-b6e5-d63b3f7c7eee",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "2b7a43d2-5768-417e-b929-69f36b37d863",
+                "title": "Fortinet FortiDDoS: Add Service Protection Profile Policy",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "20861847-593b-4851-82c6-8cb6ce84ca8b",
+              "@type": "WorkflowStep",
+              "name": "Add Service Protection Profile Policy",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiDDoS",
+                "config": "",
+                "params": {
+                  "ip-version": "IPv4",
+                  "spp": "SPP-0",
+                  "alt-spp-enable": false,
+                  "comment": "Added via FortiSOAR"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiddos",
+                "operation": "add_service_protection_profile_policy",
+                "operationTitle": "Add Service Protection Profile Policy",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "3d444c30-69ec-4668-b4a9-addba73037aa",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Add Service Protection Profile Policy",
+              "sourceStep": "/api/3/workflow_steps/2795562d-02e3-4a79-b6e5-d63b3f7c7eee",
+              "targetStep": "/api/3/workflow_steps/20861847-593b-4851-82c6-8cb6ce84ca8b"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "6a33f946-2ab0-4e44-b125-e00eabad7b58",
+          "collection": "/api/3/workflow_collections/36a149e6-0628-4d5a-b1ee-004f68e1fad3",
+          "triggerLimit": null,
+          "description": "Update Service Protection Profile Settings (SPP) based on the inputs provided.",
+          "name": "Update Service Protection Profile Settings",
+          "tag": "#Fortinet FortiDDoS",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiddos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/7d408f98-3ff7-4bfb-8454-8e3f7a363fee",
+          "steps": [
+            {
+              "uuid": "7d408f98-3ff7-4bfb-8454-8e3f7a363fee",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "50c2bfc5-df13-4dc1-a96f-b2cdaf0727cb",
+                "title": "Fortinet FortiDDoS: Update Service Protection Profile Settings",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "c739eb00-7eb1-46ec-a3d9-95ccbbb034ae",
+              "@type": "WorkflowStep",
+              "name": "Update Service Protection Profile Settings",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiDDoS",
+                "config": "",
+                "params": {
+                  "spp": "SPP-0",
+                  "resource_name": "ddos_spp_setting",
+                  "parameter_name_val": {
+                    "inbound-operating-mode": "prevention"
+                  }
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiddos",
+                "operation": "update_service_protection_profile_settings",
+                "operationTitle": "Update Service Protection Profile Settings",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "7c813fdc-c0c9-4580-804b-519c84349935",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Update Service Protection Profile Settings",
+              "sourceStep": "/api/3/workflow_steps/7d408f98-3ff7-4bfb-8454-8e3f7a363fee",
+              "targetStep": "/api/3/workflow_steps/c739eb00-7eb1-46ec-a3d9-95ccbbb034ae"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "d86ead47-954c-429f-8f12-67c122a06779",
+          "collection": "/api/3/workflow_collections/36a149e6-0628-4d5a-b1ee-004f68e1fad3",
+          "triggerLimit": null,
+          "description": "Adds a new Legitimate DNS Query to the FortiDDoS based on the input parameters you have specified.",
+          "name": "Add Legitimate DNS Query",
+          "tag": "#Fortinet FortiDDoS",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiddos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/d22128db-33f7-41a2-9a01-04c52494219b",
+          "steps": [
+            {
+              "uuid": "d22128db-33f7-41a2-9a01-04c52494219b",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "82f0f400-5c7f-4136-b340-237459f9a002",
+                "title": "Fortinet FortiDDoS: Add Legitimate DNS Query",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "ae37439d-cee1-41d4-a163-720956c92f19",
+              "@type": "WorkflowStep",
+              "name": "Add Legitimate DNS Query",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiDDoS",
+                "config": "",
+                "params": {
+                  "type": "1",
+                  "class": "1"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiddos",
+                "operation": "add_lq",
+                "operationTitle": "Add Legitimate DNS Query",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "1520dbdd-6478-4af7-afa9-8ef49f22771c",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Add Legitimate DNS Query",
+              "sourceStep": "/api/3/workflow_steps/d22128db-33f7-41a2-9a01-04c52494219b",
+              "targetStep": "/api/3/workflow_steps/ae37439d-cee1-41d4-a163-720956c92f19"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "e5af0638-f3dd-4560-abd2-23f57984e0df",
+          "collection": "/api/3/workflow_collections/36a149e6-0628-4d5a-b1ee-004f68e1fad3",
+          "triggerLimit": null,
+          "description": "Deletes legitimate DNS query from a specific from FortiDDoS based on the Domain and Type you have specified.",
+          "name": "Delete Legitimate DNS Query",
+          "tag": "#Fortinet FortiDDoS",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiddos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/66871f68-0621-438a-beba-a34e930f7f08",
+          "steps": [
+            {
+              "uuid": "66871f68-0621-438a-beba-a34e930f7f08",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "8eeac932-fa1b-495f-93bd-6524576bf38a",
+                "title": "Fortinet FortiDDoS: Delete Legitimate DNS Query",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "485559ea-586c-431f-ae9c-99945e1d7b94",
+              "@type": "WorkflowStep",
+              "name": "Delete Legitimate DNS Query",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiDDoS",
+                "config": "",
+                "params": {
+                  "type": "1",
+                  "class": "1"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiddos",
+                "operation": "delete_lq",
+                "operationTitle": "Delete Legitimate DNS Query",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "0c3ba975-70cd-4114-ae42-d8c929b61d2f",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Legitimate DNS Query",
+              "sourceStep": "/api/3/workflow_steps/66871f68-0621-438a-beba-a34e930f7f08",
+              "targetStep": "/api/3/workflow_steps/485559ea-586c-431f-ae9c-99945e1d7b94"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "0eff5d94-ee24-4074-b174-5ba12ee5a6c0",
+          "collection": "/api/3/workflow_collections/36a149e6-0628-4d5a-b1ee-004f68e1fad3",
+          "triggerLimit": null,
+          "description": "Delete Service Protection Profile Policy based on the given policy name",
+          "name": "Delete Service Protection Profile Policy",
+          "tag": "#Fortinet FortiDDoS",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiddos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/05250183-9b1f-4cff-85fc-591c667e133e",
+          "steps": [
+            {
+              "uuid": "05250183-9b1f-4cff-85fc-591c667e133e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "eca4f6f2-5939-4650-9224-8e60298e697c",
+                "title": "Fortinet FortiDDoS: Delete Service Protection Profile Policy",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "144288e2-c53c-4b49-a1b3-5d2558add8e1",
+              "@type": "WorkflowStep",
+              "name": "Delete Service Protection Profile Policy",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiDDoS",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-fortiddos",
+                "operation": "delete_service_protection_profile_policy",
+                "operationTitle": "Delete Service Protection Profile Policy",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "ce72e0fa-0aac-458b-a597-bdad652d634c",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Service Protection Profile Policy",
+              "sourceStep": "/api/3/workflow_steps/05250183-9b1f-4cff-85fc-591c667e133e",
+              "targetStep": "/api/3/workflow_steps/144288e2-c53c-4b49-a1b3-5d2558add8e1"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "9a0116a6-484f-491e-93de-27cb89f011e7",
+          "collection": "/api/3/workflow_collections/36a149e6-0628-4d5a-b1ee-004f68e1fad3",
+          "triggerLimit": null,
+          "description": "Delete Distress ACL based on the name you have provided.",
+          "name": "Delete Distress ACL",
+          "tag": "#Fortinet FortiDDoS",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiddos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/fccb00f8-1f26-4bce-a0b8-84fedd59ca18",
+          "steps": [
+            {
+              "uuid": "fccb00f8-1f26-4bce-a0b8-84fedd59ca18",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "77c73d38-9f2a-400b-bcfa-b7e14d5a86f2",
+                "title": "Fortinet FortiDDoS: Delete Distress ACL",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "ec1689f7-4d6b-4585-93d3-76cd53f481a1",
+              "@type": "WorkflowStep",
+              "name": "Delete Distress ACL",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiDDoS",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-fortiddos",
+                "operation": "delete_distress_acl",
+                "operationTitle": "Delete Distress ACL",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "ac83cbeb-30e5-4d91-a128-cff4cf162e77",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Distress ACL",
+              "sourceStep": "/api/3/workflow_steps/fccb00f8-1f26-4bce-a0b8-84fedd59ca18",
+              "targetStep": "/api/3/workflow_steps/ec1689f7-4d6b-4585-93d3-76cd53f481a1"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "2dc9ae71-4224-43b6-bd0d-99b3fe4e6e0c",
+          "collection": "/api/3/workflow_collections/36a149e6-0628-4d5a-b1ee-004f68e1fad3",
+          "triggerLimit": null,
+          "description": "Generate BGP flow specifications based on the input you have provided.",
+          "name": "Generate BGP Flowspec",
+          "tag": "#Fortinet FortiDDoS",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiddos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/e4755cce-ee2f-4c0b-aee0-7a05069f133e",
+          "steps": [
+            {
+              "uuid": "e4755cce-ee2f-4c0b-aee0-7a05069f133e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "e4029ae5-5918-454f-91b1-4a52a84fe75b",
+                "title": "Fortinet FortiDDoS: Generate BGP Flowspec",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "9a69efaa-60e4-42b5-9cf5-8bdce9c14d92",
+              "@type": "WorkflowStep",
+              "name": "Generate BGP Flowspec",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiDDoS",
+                "config": "",
+                "params": {
+                  "vendor": null
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiddos",
+                "operation": "generate_bgp_flowspec",
+                "operationTitle": "Generate BGP Flowspec",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "64ddf09a-97bc-4ab8-9f90-38a1715f9d84",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Generate BGP Flowspec",
+              "sourceStep": "/api/3/workflow_steps/e4755cce-ee2f-4c0b-aee0-7a05069f133e",
+              "targetStep": "/api/3/workflow_steps/9a69efaa-60e4-42b5-9cf5-8bdce9c14d92"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
