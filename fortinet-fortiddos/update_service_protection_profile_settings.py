@@ -25,4 +25,3 @@ def update_service_protection_profile_settings(config, params):
     endpoint = "/api/v2/spp/{spp_name}/ddos_spp_setting/".format(spp_name=spp)
     api_response = ddos_conn.make_request(method='PUT', endpoint=endpoint, data=rq)
     return api_response
-    

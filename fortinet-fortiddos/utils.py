@@ -28,13 +28,10 @@ class MakeRestApiCall():
         self.username = config.get("username")
         self.password = config.get("password")
         self.headers = {}
-        # self.headers["Content-Type"] = "application/json"
         self.verify_ssl = config.get("verify_ssl", True)
         self.__generate_token()
 
-
     def __generate_token(self):
-        # curl -H "ContentType:application/json" -X POST -d ' {"username":"rest_api_admin","password":"rest_api_password"}' https://172.30.153.169/api/authenticate/ -k
         self.headers = {"ContentType": "application/json"}
         data = {"username": self.username, "password": self.password}
         endpoint = '/api/authenticate/'
@@ -79,5 +76,3 @@ class MakeRestApiCall():
                     make_query.append(query)
                 make_query.update({k: PARAM_MAPPING.get(v) if k in CONVERT_LIST else PARAM_MAPPING.get(k, k)})
         return '&'.join(make_query) if make_str else make_query
-
-

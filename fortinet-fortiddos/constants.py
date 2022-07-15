@@ -4,7 +4,8 @@
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
 LOGGER_NAME = 'fortinet-fortiddos'
-CONVERT_LIST = ['alt-spp-enable', 'acl-enable', 'destination-port', 'dscp', 'fragment', 'protocol', 'source-ip', 'source-port', 'tcp-control-flag', 'ttl']
+CONVERT_LIST = ['alt-spp-enable', 'acl-enable', 'destination-port', 'dscp', 'fragment', 'protocol', 'source-ip',
+                'source-port', 'tcp-control-flag', 'ttl']
 CONVERT_STR = ['destination-port-end', 'threshold-per-million', 'protocol-number', 'ttl-value', 'class', 'threshold']
 PARAM_MAPPING = {
     True: 'enable',
@@ -14,11 +15,7 @@ PARAM_MAPPING = {
     'not-first-fragment': '3',
     'any-fragment': '4',
 
-     #destination
+    # destination
     'ip-netmask-ipv4': '1',
     'all': '4'
-
-
-
-
 }
