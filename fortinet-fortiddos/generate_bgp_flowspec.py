@@ -14,7 +14,7 @@ logger = get_logger(LOGGER_NAME)
 def generate_bgp_flowspec(config, params):
     content = {}
     ddos_conn = MakeRestApiCall(config)
-    ddos_conn.headers = {'Content-Type': 'application/json'}
+    ddos_conn.headers.update({'Content-Type': 'application/json'})
     payload = ddos_conn.build_query(params)
     endpoint = "/api/v2/flowspec_generate"
     payload.update({
@@ -31,7 +31,7 @@ def generate_bgp_flowspec(config, params):
 
     if "Available" in status_resp["report-status"]:
         download_url = "/api/v2/flowspec_config"
-        ddos_conn.headers = {'Accept': 'text/plain', 'Content-Type': 'application/json'}
+        ddos_conn.headers.update({'Accept': 'text/plain', 'Content-Type': 'application/json'})
         download_resp = ddos_conn.make_request("GET", download_url)
         content.update({'data': download_resp})
         # content = content.replace('\n', " ")

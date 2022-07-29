@@ -13,6 +13,6 @@ logger = get_logger(LOGGER_NAME)
 def get_log_settings(config, params):
     resource_name = params.get('resource_name')
     ddos_conn = MakeRestApiCall(config)
-    ep = "/api/v2/log/{0}".format(resource_name)
+    ep = "/api/v2/log/{0}/".format(resource_name)
     response = ddos_conn.make_request(endpoint=ep)
     return response

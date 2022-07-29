@@ -17,4 +17,5 @@ def get_attack_information(config, params):
     if query_str:
         ep += '?' + query_str
     response = ddos_conn.make_request(endpoint=ep)
-    return response
+    return [] if response == '' else response
+

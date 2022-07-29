@@ -13,7 +13,7 @@ logger = get_logger(LOGGER_NAME)
 
 def add_service_protection_profile_policy(config, params):
     ddos_conn = MakeRestApiCall(config)
-    ddos_conn.headers = {'Accept': '*/*', 'Content-Type': 'application/json'}
+    ddos_conn.headers.update({'Accept': '*/*', 'Content-Type': 'application/json'})
     data = ddos_conn.build_query(params)
     ep = "/api/v2/ddos/global/ddos_global_spp_policy/"
     if data.get('alt-spp-enable') == 'disable':

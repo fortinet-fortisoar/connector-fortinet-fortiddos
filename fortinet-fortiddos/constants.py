@@ -19,3 +19,45 @@ PARAM_MAPPING = {
     'ip-netmask-ipv4': '1',
     'all': '4'
 }
+RESOURCE_MAPPING = {
+    "Switching Policy": "ddos-global-spp-switching-policy",
+    "SPP Policy": "ddos-global-spp-policy",
+    "SPP Policy Group": "ddos_global_spp_policy_group",
+
+    "HTTP Service Ports": "ddos_global_http_service_ports",
+    "UDP Service Ports": "ddos_global_udp_service_ports",
+    "Signaling": "ddos_global_sp_fdd",
+    "Service Provider Address": "ddos_global_service_provider_address",
+
+    "Local Address Config": "ddos_global_firewall_local_address",
+    "Local Address Config IPv6": "ddos_global_firewall_local_address6",
+    "Address Config": "ddos_global_firewall_address",
+    "Address Config IPv6": "ddos_global_firewall_address6",
+
+    "Do Not Track Policy": "ddos_global_do_not_track_policy",
+    "Do Not Track Policy IPv6": "ddos_global_do_not_track_policy6",
+
+    "Access Control List": "ddos_global_firewall_policy",
+    "Access Control List IPv6": "ddos_global_firewall_policy6",
+    "Advanced Settings: Distress ACL": "ddos_global_distress_acl",
+    "Bypass MAC": "ddos_global_bypass_macs",
+        
+
+
+    "Interface": "interface",
+    "DNS": "dns",
+    "Static Route": "route",
+    "High Availability": "HA",
+    "System Information": "snmp_sysinfo",
+    "SNMP Threshold": "snmp_threshold",
+    "SNMP Community": "snmp_community",
+
+    "Auth Radius": "auth_radius",
+    "Auth LDAP": "auth_LDAP",
+    "Auth TACACS+": "auth_tacacsplus",
+
+    "Admin User": "adminuser",
+    "Access Profile": "accprofile",
+    "Settings": "sysglobal",
+    "Certificate": "certificate_local"
+}

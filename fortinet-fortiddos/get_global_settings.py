@@ -4,7 +4,7 @@
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
 from connectors.core.connector import get_logger, ConnectorError
-from .constants import LOGGER_NAME
+from .constants import LOGGER_NAME, RESOURCE_MAPPING
 from .utils import MakeRestApiCall
 
 logger = get_logger(LOGGER_NAME)
@@ -13,6 +13,8 @@ logger = get_logger(LOGGER_NAME)
 def get_global_settings(config, params):
     resource_name = params.get('resource_name')
     ddos_conn = MakeRestApiCall(config)
-    ep = "/api/v2/" + ('distress_acl/' if resource_name == 'ddos_global_distress_acl' else 'ddos/global/')
+    ep = "/api/v2/" + (
+        'distress_acl/' if resource_name == 'ddos_global_distress_acl' else 'ddos/global/{resource_name}/'.format(
+            resource_name=RESOURCE_MAPPING.get(resource_name, resource_name)))
     response = ddos_conn.make_request(endpoint=ep)
     return response
