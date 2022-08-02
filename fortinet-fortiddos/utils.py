@@ -30,19 +30,21 @@ class MakeRestApiCall():
         self.__generate_token()
 
     def __generate_token(self):
-        self.headers = {"ContentType": "application/json"}
+        headers = {"Content-Type": "application/json"}
         data = {"username": self.username, "password": self.password}
         endpoint = '/api/authenticate/'
-        token = self.make_request(method='POST', endpoint=endpoint, data=json.dumps(data)).get('access_token')
+        token = self.make_request(method='POST', endpoint=endpoint, data=json.dumps(data), headers=headers).get(
+            'access_token')
         self.headers["Authorization"] = "Bearer " + token
 
-    def make_request(self, method='GET', endpoint='', params=None, data=None, json_data=None):
+    def make_request(self, method='GET', endpoint='', params=None, data=None, json_data=None, headers=None):
         try:
             if "Accept" not in self.headers:
                 self.headers["Accept"] = "application/json"
+            if headers: headers.update(self.headers)
             url = self.server_url + endpoint
             logger.debug('endpoint url:{0}'.format(url))
-            response = requests.request(method=method, url=url, headers=self.headers, data=data, json=json_data,
+            response = requests.request(method=method, url=url, headers=headers if headers else self.headers, data=data, json=json_data,
                                         params=params, verify=self.verify_ssl)
             if response.ok:
                 try:
@@ -73,5 +75,5 @@ class MakeRestApiCall():
                     query = "{k}={v}".format(k=k, v=v)
                     make_query.append(query)
                 else:
-                    make_query.update({k: PARAM_MAPPING.get(v, v) if k in CONVERT_LIST else PARAM_MAPPING.get(k, k)})
+                    make_query.update({k: PARAM_MAPPING.get(v, v) if k in CONVERT_LIST else PARAM_MAPPING.get(k, v)})
         return '&'.join(make_query) if make_str else make_query

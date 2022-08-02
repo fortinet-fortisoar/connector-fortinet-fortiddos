@@ -6,16 +6,12 @@
 from connectors.core.connector import get_logger, ConnectorError
 from .constants import LOGGER_NAME
 from .utils import MakeRestApiCall
-import json
 
 logger = get_logger(LOGGER_NAME)
 
 
-def add_lq(config, params):
+def get_service_protection_profile_policy(config, params):
     ddos_conn = MakeRestApiCall(config)
-    data = ddos_conn.build_query(params)
-    request_body = {'data': data}
-    rq = json.dumps(request_body)
-    endpoint = "/api/v2/legitimate_queries/"
-    api_response = ddos_conn.make_request(method='POST', endpoint=endpoint, data=rq)
-    return api_response
+    ep = "/api/v2/ddos/global/ddos_global_spp_policy/"
+    response = ddos_conn.make_request(endpoint=ep)
+    return response

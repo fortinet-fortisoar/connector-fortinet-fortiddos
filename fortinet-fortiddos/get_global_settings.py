@@ -14,7 +14,7 @@ def get_global_settings(config, params):
     resource_name = params.get('resource_name')
     ddos_conn = MakeRestApiCall(config)
     ep = "/api/v2/" + (
-        'distress_acl/' if resource_name == 'ddos_global_distress_acl' else 'ddos/global/{resource_name}/'.format(
+        'distress_acl/' if resource_name == 'Advanced Settings: Distress ACL' else 'ddos/global/{resource_name}/'.format(
             resource_name=RESOURCE_MAPPING.get(resource_name, resource_name)))
     response = ddos_conn.make_request(endpoint=ep)
     return response

@@ -16,14 +16,30 @@ from .delete_lq import delete_lq
 from .delete_service_protection_profile_policy import delete_service_protection_profile_policy
 from .delete_distress_acl import delete_distress_acl
 from .generate_bgp_flowspec import generate_bgp_flowspec
+from .get_service_protection_profile_policy import  get_service_protection_profile_policy
 
 supported_operations = {'get_spp_settings': get_spp_settings,
                         'get_global_settings': get_global_settings,
+                        'get_global_spp': get_global_settings,
+                        'get_settings': get_global_settings,
+                        'get_global_settings_address': get_global_settings,
+                        'get_ip_reputation': get_global_settings,
+                        'get_domain_reputation': get_global_settings,
+                        'get_proxy_ip': get_global_settings,
+                        'get_proxy_ip_policy': get_global_settings,
+                        'get_do_not_track_policy': get_global_settings,
+                        'get_global_acl': get_global_settings,
+                        'get_bypass_mac': get_global_settings,
+
+
                         'get_system_settings': get_system_settings,
                         'get_log_settings': get_log_settings,
+
+
                         'get_attack_information': get_attack_information,
                         'add_distress_acl': add_distress_acl,
                         'add_service_protection_profile_policy': add_service_protection_profile_policy,
+                        'get_service_protection_profile_policy': get_service_protection_profile_policy,
                         'update_service_protection_profile_settings': update_service_protection_profile_settings,
                         'add_lq': add_lq,
                         'delete_lq': delete_lq,

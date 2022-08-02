@@ -13,6 +13,7 @@ logger = get_logger(LOGGER_NAME)
 
 
 def update_service_protection_profile_settings(config, params):
+    resource_name = params.get('resource_name')
     response = get_spp_settings(config, params)
     spp_args = params.get('parameter_name_val')
     data = response.get('data')[0]
@@ -24,4 +25,6 @@ def update_service_protection_profile_settings(config, params):
     spp = params.get('spp')
     endpoint = "/api/v2/spp/{spp_name}/ddos_spp_setting/".format(spp_name=spp)
     api_response = ddos_conn.make_request(method='PUT', endpoint=endpoint, data=rq)
-    return api_response
+    return {"status": "success",
+            "message": "{0} updated successfully.".format(resource_name)} if api_response == '' else {
+        "status": "failed", "message": "Failed to update {0}.".format(resource_name)}
