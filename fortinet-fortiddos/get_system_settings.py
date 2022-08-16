@@ -11,7 +11,10 @@ logger = get_logger(LOGGER_NAME)
 
 
 def get_system_settings(config, params):
+    primary_resource_name = params.get('primary_resource_name')
     resource_name = params.get('resource_name')
+    if primary_resource_name in ['High Availability', 'Certificate']:
+        resource_name = RESOURCE_MAPPING.get(primary_resource_name)
     ddos_conn = MakeRestApiCall(config)
     ep = "/api/v2/system/{0}/".format(RESOURCE_MAPPING.get(resource_name, resource_name))
     response = ddos_conn.make_request(endpoint=ep)

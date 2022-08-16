@@ -7,7 +7,7 @@
       "name": "Sample - Fortinet FortiDDoS - 1.0.0",
       "description": "FortiDDoS Protection Solution defends enterprise data centers against DDoS attacks by leveraging an extensive collection of known DDoS methodologies, creating a multi-layered approach to mitigate attacks.  It also analyzes the behavior of data to detect new attacks, allowing it to stop zero-day threats.",
       "visible": true,
-      "image": null,
+      "image": "fortiddos_100x100.png",
       "recordTags": [
         "Fortinet",
         "fortinet-fortiddos"
@@ -66,7 +66,7 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
                   "spp": "SPP-0",
                   "resource_name": "SPP Settings"
@@ -149,7 +149,7 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
                   "spp": "SPP-0",
                   "resource_name": "ddos_spp_setting",
@@ -235,10 +235,8 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
-                "params": {
-                  "resource_name": "ddos_global_setting"
-                },
+                "config": "",
+                "params": {},
                 "version": "1.0.0",
                 "connector": "fortinet-fortiddos",
                 "operation": "get_global_settings",
@@ -317,7 +315,7 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
                   "resource_name": "Switching Policy"
                 },
@@ -399,7 +397,7 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
                   "resource_name": "HTTP Service Ports"
                 },
@@ -481,7 +479,7 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
                   "resource_name": "Address Config"
                 },
@@ -563,10 +561,8 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
-                "params": {
-                  "resource_name": "ddos_global_ipreputation"
-                },
+                "config": "",
+                "params": {},
                 "version": "1.0.0",
                 "connector": "fortinet-fortiddos",
                 "operation": "get_ip_reputation",
@@ -645,10 +641,8 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
-                "params": {
-                  "resource_name": "ddos_global_domain_reputation"
-                },
+                "config": "",
+                "params": {},
                 "version": "1.0.0",
                 "connector": "fortinet-fortiddos",
                 "operation": "get_domain_reputation",
@@ -727,10 +721,8 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
-                "params": {
-                  "resource_name": "ddos_global_proxy_ip"
-                },
+                "config": "",
+                "params": {},
                 "version": "1.0.0",
                 "connector": "fortinet-fortiddos",
                 "operation": "get_proxy_ip",
@@ -809,10 +801,8 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
-                "params": {
-                  "resource_name": "ddos_global_proxyip_policy"
-                },
+                "config": "",
+                "params": {},
                 "version": "1.0.0",
                 "connector": "fortinet-fortiddos",
                 "operation": "get_proxy_ip_policy",
@@ -891,7 +881,7 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
                   "resource_name": "Do Not Track Policy"
                 },
@@ -973,7 +963,7 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
                   "resource_name": "Access Control List"
                 },
@@ -1055,10 +1045,8 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
-                "params": {
-                  "resource_name": "ddos_global_bypass_macs"
-                },
+                "config": "",
+                "params": {},
                 "version": "1.0.0",
                 "connector": "fortinet-fortiddos",
                 "operation": "get_bypass_mac",
@@ -1137,9 +1125,10 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
-                  "primary_resource_name": "Interface"
+                  "resource_name": "Interface",
+                  "primary_resource_name": "Network"
                 },
                 "version": "1.0.0",
                 "connector": "fortinet-fortiddos",
@@ -1219,7 +1208,7 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
                   "resource_name": "log_local"
                 },
@@ -1301,7 +1290,7 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
                   "spp_name": "SPP-0",
                   "dir": "Inbound",
@@ -1386,9 +1375,8 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
-                  "acl-enable": false,
                   "destination": "all",
                   "destination-port": false,
                   "dscp": false,
@@ -1397,7 +1385,12 @@
                   "source-ip": false,
                   "source-port": false,
                   "tcp-control-flag": false,
-                  "ttl": false
+                  "ttl": false,
+                  "spp": "SPP-0",
+                  "mkey": "FortiSOAR_ACL",
+                  "acl-enable": true,
+                  "threshold-per-million": 100000,
+                  "destination-ipv4-netmask": "0.0.0.0/0"
                 },
                 "version": "1.0.0",
                 "connector": "fortinet-fortiddos",
@@ -1477,7 +1470,7 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": [],
                 "version": "1.0.0",
                 "connector": "fortinet-fortiddos",
@@ -1557,7 +1550,7 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
                   "ip-version": "IPv4",
                   "spp": "SPP-0",
@@ -1642,7 +1635,7 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": [],
                 "version": "1.0.0",
                 "connector": "fortinet-fortiddos",
@@ -1722,7 +1715,7 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": [],
                 "version": "1.0.0",
                 "connector": "fortinet-fortiddos",
@@ -1802,8 +1795,9 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
+                  "query": "test.com",
                   "type": "1",
                   "class": "1"
                 },
@@ -1885,8 +1879,9 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
+                  "query": "test.com",
                   "type": "1",
                   "class": "1"
                 },
@@ -1968,9 +1963,11 @@
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiDDoS",
-                "config": "''",
+                "config": "",
                 "params": {
-                  "vendor": null
+                  "vendor": "Cisco",
+                  "threshold": 190000,
+                  "destination": "1.1.1.1"
                 },
                 "version": "1.0.0",
                 "connector": "fortinet-fortiddos",

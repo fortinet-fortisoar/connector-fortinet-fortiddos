@@ -43,7 +43,7 @@ class MakeRestApiCall():
                 self.headers["Accept"] = "application/json"
             if headers: headers.update(self.headers)
             url = self.server_url + endpoint
-            logger.debug('endpoint url:{0}'.format(url))
+            logger.info('Requested url:{0}'.format(url))
             response = requests.request(method=method, url=url, headers=headers if headers else self.headers, data=data, json=json_data,
                                         params=params, verify=self.verify_ssl)
             if response.ok:
