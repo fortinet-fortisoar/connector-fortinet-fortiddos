@@ -12,11 +12,13 @@ logger = get_logger(LOGGER_NAME)
 
 
 def add_lq(config, params):
+    query = params.get('query')
     ddos_conn = MakeRestApiCall(config)
     data = ddos_conn.build_query(params)
     request_body = {'data': data}
     rq = json.dumps(request_body)
     endpoint = "/api/v2/legitimate_queries/"
-    ddos_conn.headers = {'Content-Type': 'application/json'}
     api_response = ddos_conn.make_request(method='POST', endpoint=endpoint, data=rq)
-    return api_response
+    return {"status": "success",
+            "message": "{0} created successfully.".format(query)} if api_response == '' else {
+        "status": "failed", "message": "Failed to create {0}.".format(query)}

@@ -53,9 +53,9 @@
   },
   "operations": [
     {
-      "title": "Get SPP Settings",
+      "title": "Get Protection Profiles",
       "operation": "get_spp_settings",
-      "description": "Retrieves the service protection profile settings of the FortiDDoS appliance given the SPP name.",
+      "description": "Retrieves the Protection Profiles details from FortiDDoS appliance of the given SPP name.",
       "category": "investigation",
       "annotation": "get_spp_settings",
       "enabled": true,
@@ -78,34 +78,500 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "value": "ddos_spp_setting",
+          "value": "SPP Settings",
           "options": [
-            "ddos_spp_setting",
-            "ddos_spp_firewall_service",
-            "ddos_spp_firewall_policy",
-            "ddos_spp_firewall_address",
-            "ddos_spp_firewall_address6",
-            "ddos_spp_tcp_session_extended_timeout_policy",
-            "ddos_spp_threshold_scalar",
-            "ddos_spp_threshold_http_methods",
-            "ddos_spp_threshold_protocol",
-            "ddos_spp_threshold_tcp_ports",
-            "ddos_spp_threshold_udp_ports",
-            "ddos_spp_threshold_icmp_type_codes",
-            "ddos_spp_threshold_http_urls",
-            "ddos_spp_threshold_http_hosts",
-            "ddos_spp_threshold_http_referers",
-            "ddos_spp_threshold_http_cookies",
-            "ddos_spp_threshold_http_user_agents"
+            "SPP Settings",
+            "Service Config",
+            "Access Control List",
+            "Address Config",
+            "Address Config IPv6",
+            "Extended Timeout Policy",
+            "Thresholds > Thresholds > Scalars",
+            "Thresholds > Thresholds > HTTP Methods",
+            "Thresholds > Thresholds > Protocols",
+            "Thresholds > Thresholds > TCP Ports",
+            "Thresholds > Thresholds > UDP Ports",
+            "Thresholds > Thresholds > ICMP Types/Codes",
+            "Thresholds > Thresholds > URLs",
+            "Thresholds > Thresholds > Hosts",
+            "Thresholds > Thresholds > Referers",
+            "Thresholds > Thresholds > Cookies",
+            "Thresholds > Thresholds > User Agents"
           ],
-          "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: ddos_spp_setting, ddos_spp_firewall_service, ddos_spp_firewall_policy, ddos_spp_firewall_address, ddos_spp_firewall_address6, ddos_spp_tcp_session_extended_timeout_policy, ddos_spp_threshold_scalar, ddos_spp_threshold_http_methods, ddos_spp_threshold_protocol, ddos_spp_threshold_tcp_ports, ddos_spp_threshold_udp_ports, ddos_spp_threshold_icmp_type_codes, ddos_spp_threshold_http_urls, ddos_spp_threshold_http_hosts, ddos_spp_threshold_http_referers, ddos_spp_threshold_http_cookies, ddos_spp_threshold_http_user_agents."
+          "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: SPP Settings, Service Config, Access Control List, Address Config, Address Config IPv6, Extended Timeout Policy, Thresholds > Thresholds > Scalars, Thresholds > Thresholds > HTTP Methods, Thresholds > Thresholds > Protocols, Thresholds > Thresholds > TCP Ports, Thresholds > Thresholds > UDP Ports, Thresholds > Thresholds > ICMP Types/Codes, Thresholds > Thresholds > URLs, Thresholds > Thresholds > Hosts, Thresholds > Thresholds > Referers, Thresholds > Thresholds > Cookies, Thresholds > Thresholds > User Agents."
         }
       ],
-      "output_schema": {}
+      "conditional_output_schema": [
+        {
+          "condition": "{{true}}",
+          "output_schema": {
+            "success": "",
+            "query": "",
+            "data": [],
+            "message": ""
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'SPP Settings'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "spp-id": "",
+                "adaptive-mode": "",
+                "adaptive-limit": "",
+                "strict-anomalies": "",
+                "dns-authentication": "",
+                "slow-connection-type": "",
+                "duplicate-query-check": "",
+                "ntp-request-threshold": "",
+                "inbound-operating-mode": "",
+                "ntp-response-threshold": "",
+                "source-blocking-in-dns": "",
+                "ntp-broadcast-threshold": "",
+                "outbound-operating-mode": "",
+                "tcp-session-idle-timeout": "",
+                "syn-flood-mitigation-mode": "",
+                "syn-with-payload-direction": "",
+                "mandatory-http-header-count": "",
+                "match-response-with-queries": "",
+                "tcp-session-feature-control": "",
+                "tcp-session-extended-timeout": "",
+                "inbound-source-penalty-factor": "",
+                "tcp-session-idle-timeout-unit": "",
+                "force-tcp-or-forward-to-server": "",
+                "ntp-response-per-dst-threshold": "",
+                "outbound-source-penalty-factor": "",
+                "syn-flood-mitigation-direction": "",
+                "aggressive-aging-feature-control": "",
+                "dns-data-anomaly-feature-control": "",
+                "dns-info-anomaly-feature-control": "",
+                "dns-flood-mitigation-mode-inbound": "",
+                "dns-query-anomaly-feature-control": "",
+                "ntp-mode-mismatch-feature-control": "",
+                "ssl-renegotiation-feature-control": "",
+                "tcp-session-extended-timeout-unit": "",
+                "dns-flood-mitigation-mode-outbound": "",
+                "dns-header-anomaly-feature-control": "",
+                "inbound-application-penalty-factor": "",
+                "ntp-retransmission-feature-control": "",
+                "slow-tcp-connection-byte-threshold": "",
+                "dns-exploit-anomaly-feature-control": "",
+                "ntp-stratum-anomaly-feature-control": "",
+                "ntp-version-anomaly-feature-control": "",
+                "outbound-application-penalty-factor": "",
+                "allow-only-valid-queries-under-flood": "",
+                "dns-response-anomaly-feature-control": "",
+                "ntp-sequence-mismatch-feature-control": "",
+                "slow-tcp-connection-observation-period": "",
+                "http-incomplete-request-feature-control": "",
+                "ntp-data-length-anomaly-feature-control": "",
+                "generate-response-from-cache-under-flood": "",
+                "ntp-unsolicited-response-feature-control": "",
+                "restrict-dns-queries-to-specific-subnets": "",
+                "source-blocking-for-tcp-slow-connections": "",
+                "validate-ttl-for-queries-from-the-same-ip": "",
+                "dns-buffer-overflow-anomaly-feature-control": "",
+                "ntp-control-header-anomalies-feature-control": "",
+                "source-blocking-for-http-incomplete-requests": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Update SPP Settings",
+      "operation": "update_service_protection_profile_settings",
+      "description": "Update (Service Protection Profile) SPP settings based on the inputs provided.",
+      "category": "remediation",
+      "annotation": "update_service_protection_profile_settings",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "SPP Name",
+          "type": "text",
+          "name": "spp",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "SPP-0",
+          "tooltip": "Name of the service protection profile",
+          "description": "Name of the Service protection profile to update SPP settings."
+        },
+        {
+          "title": "Resource Name",
+          "type": "select",
+          "name": "resource_name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "SPP Settings",
+          "options": [
+            "SPP Settings",
+            "Service Config",
+            "Access Control List",
+            "Address Config",
+            "Address Config IPv6",
+            "Extended Timeout Policy",
+            "Thresholds > Thresholds > Scalars",
+            "Thresholds > Thresholds > HTTP Methods",
+            "Thresholds > Thresholds > Protocols",
+            "Thresholds > Thresholds > TCP Ports",
+            "Thresholds > Thresholds > UDP Ports",
+            "Thresholds > Thresholds > ICMP Types/Codes",
+            "Thresholds > Thresholds > URLs",
+            "Thresholds > Thresholds > Hosts",
+            "Thresholds > Thresholds > Referers",
+            "Thresholds > Thresholds > Cookies",
+            "Thresholds > Thresholds > User Agents"
+          ],
+          "description": "Specify the name of the resource whose setting you want to update.\nFollowing are possible resource names: SPP Settings, Service Config, Access Control List, Address Config, Address Config IPv6, Extended Timeout Policy, Thresholds > Thresholds > Scalars, Thresholds > Thresholds > HTTP Methods, Thresholds > Thresholds > Protocols, Thresholds > Thresholds > TCP Ports, Thresholds > Thresholds > UDP Ports, Thresholds > Thresholds > ICMP Types/Codes, Thresholds > Thresholds > URLs, Thresholds > Thresholds > Hosts, Thresholds > Thresholds > Referers, Thresholds > Thresholds > Cookies, Thresholds > Thresholds > User Agents."
+        },
+        {
+          "title": "Resource Arguments",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "json",
+          "name": "parameter_name_val",
+          "tooltip": "SPP settings arguments in json format",
+          "placeholder": "{\"field1\":value1, \"field2\":value2}",
+          "value": {
+            "inbound-operating-mode": "prevention"
+          },
+          "description": "Specify SPP setting arguments in JSON format at the time of update the SPP setting. You can enter the arguments in the following format: {\"field1\":value1, \"field2\":value2}. Eg: {\"inbound-operating-mode\":  \"prevention\"}"
+        }
+      ],
+      "output_schema": {
+        "status": "",
+        "message": ""
+      }
     },
     {
       "title": "Get Global Settings",
       "operation": "get_global_settings",
+      "description": "Retrieves settings from the global settings (Global Settings > Settings > Settings) of the FortiDDoS appliance.",
+      "category": "investigation",
+      "annotation": "get_global_settings",
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "query": "",
+        "success": "",
+        "message": "",
+        "data": [
+          {
+            "link-down-synchronization": "",
+            "blocking-period": "",
+            "source-blocking-period": "",
+            "extended-blocking-period": "",
+            "drop-threshold-within-blocking-period": "",
+            "url-per-source-observation-period": "",
+            "http-source-observation-period": "",
+            "ip-v6-prefix-length": "",
+            "source-mac-address-aggressive-aging": "",
+            "http-anomaly": "",
+            "geo-location": "",
+            "ipv6-prefix": "",
+            "http-partial-request-per-source-per-second-threshold": "",
+            "http-partial-request-to-response-observation-period": "",
+            "local-address-anti-spoofing": "",
+            "asymmetric-mode": "",
+            "asymmetric-mode-allow-inbound-synack": "",
+            "tap-mode": "",
+            "drop-http-range-header": "",
+            "dns-response-size": "",
+            "power-fail-bypass-mode": "",
+            "signaling-mode": "",
+            "invalid-icmp-anomaly": "",
+            "spp-switching-threshold-measurement-unit": "",
+            "persistent-http-transactions": "",
+            "reboot-on-graceful-recovery": "",
+            "drop-threshold-for-foreign-packets": "",
+            "dpc-timeout": "",
+            "gtp-protocol-inspection": "",
+            "lq-apply-schedule": "",
+            "lq-drop-threshold": ""
+          }
+        ]
+      }
+    },
+    {
+      "title": "Get Global Service Protection Profiles",
+      "operation": "get_global_spp",
+      "description": "Retrieves the global service protection profile (Global Settings > Service Protection Profiles) details from the FortiDDoS appliance.",
+      "category": "investigation",
+      "annotation": "get_global_settings",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Resource Name",
+          "type": "select",
+          "name": "resource_name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "Switching Policy",
+          "tooltip": "Global Settings > Service Protection Profiles",
+          "options": [
+            "Switching Policy",
+            "SPP Policy",
+            "SPP Policy Group"
+          ],
+          "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: \"Switching Policy\", \"SPP Policy\", \"SPP Policy Group\"."
+        }
+      ],
+      "conditional_output_schema": [
+        {
+          "condition": "{{true}}",
+          "output_schema": {
+            "success": "",
+            "query": "",
+            "data": [],
+            "message": ""
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'Switching Policy'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "enable-switching": "",
+                "timeout": "",
+                "start-timeout": "",
+                "switching-type": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Get Settings",
+      "operation": "get_settings",
+      "description": "Retrieves the internal sub resources from settings of the FortiDDoS global settings.",
+      "category": "investigation",
+      "annotation": "get_global_settings",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Resource Name",
+          "type": "select",
+          "name": "resource_name",
+          "tooltip": "Global Settings > Settings",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "HTTP Service Ports",
+          "options": [
+            "HTTP Service Ports",
+            "UDP Service Ports",
+            "Signaling",
+            "Service Provider Address"
+          ],
+          "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: HTTP Service Ports, UDP Service Ports, Signaling, Service Provider Address."
+        }
+      ],
+      "output_schema": {
+        "success": "",
+        "query": "",
+        "data": [],
+        "message": ""
+      }
+    },
+    {
+      "title": "Get Global Settings Address",
+      "operation": "get_global_settings_address",
+      "description": "Retrieves the global setting address of the FortiDDoS appliance.",
+      "category": "investigation",
+      "annotation": "get_global_settings",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Resource Name",
+          "type": "select",
+          "name": "resource_name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "Address Config",
+          "tooltip": "Global Settings > Address",
+          "options": [
+            "Local Address Config",
+            "Local Address Config IPv6",
+            "Address Config",
+            "Address Config IPv6"
+          ],
+          "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: Local Address Config, Local Address Config IPv6, Address Config, Address Config IPv6."
+        }
+      ],
+      "conditional_output_schema": [
+        {
+          "condition": "{{this['resource_name'] === 'Local Address Config'}}",
+          "output_schema": {
+            "success": "",
+            "query": "",
+            "data": [
+              {
+                "mkey": "",
+                "ip-netmask": ""
+              }
+            ],
+            "message": ""
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'Local Address Config IPv6'}}",
+          "output_schema": {
+            "success": "",
+            "query": "",
+            "data": [
+              {
+                "mkey": "",
+                "ip-prefix": ""
+              }
+            ],
+            "message": ""
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'Address Config'}}",
+          "output_schema": {
+            "success": "",
+            "query": "",
+            "data": [
+              {
+                "mkey": "",
+                "type": "",
+                "ip-netmask": "",
+                "ip-address": "",
+                "geo-location": ""
+              }
+            ],
+            "message": ""
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'Address Config IPv6'}}",
+          "output_schema": {
+            "success": "",
+            "query": "",
+            "data": [
+              {
+                "mkey": "",
+                "type": "",
+                "ipv6-addr-prefix": "",
+                "ipv6-address": ""
+              }
+            ],
+            "message": ""
+          }
+        }
+      ]
+    },
+    {
+      "title": "Get IP Reputation",
+      "operation": "get_ip_reputation",
+      "description": "Retrieves the IP reputation details (Global Settings > IP Reputation) of the FortiDDoS appliance.",
+      "category": "investigation",
+      "annotation": "get_global_settings",
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "success": "",
+        "query": "",
+        "data": [
+          {
+            "ip-reputation-status": "",
+            "override-server-ip": "",
+            "ip-reputation-ip-address": "",
+            "ip-reputation-schedule-type": "",
+            "ip-reputation-schedule-hour": "",
+            "ip-reputation-schedule-weekday": "",
+            "ip-reputation-category": "",
+            "ip-reputation-tunnel": "",
+            "ip-reputation-tunnel-address": "",
+            "ip-reputation-tunnel-port": "",
+            "ip-reputation-tunnel-user": "",
+            "ip-reputation-tunnel-password": ""
+          }
+        ],
+        "message": ""
+      }
+    },
+    {
+      "title": "Get Domain Reputation",
+      "operation": "get_domain_reputation",
+      "description": "Retrieves the domain reputation details (Global Settings > Domain Reputation) of the FortiDDoS appliance.",
+      "category": "investigation",
+      "annotation": "get_global_settings",
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "query": "",
+        "success": "",
+        "message": "",
+        "data": [
+          {
+            "domain-reputation-status": "",
+            "override-server-ip": "",
+            "domain-reputation-ip-address": "",
+            "domain-reputation-schedule-type": ""
+          }
+        ]
+      }
+    },
+    {
+      "title": "Get Proxy IP",
+      "operation": "get_proxy_ip",
+      "description": "Retrieves the proxy IP details of the FortiDDoS appliance.",
+      "category": "investigation",
+      "annotation": "get_global_settings",
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "query": "",
+        "success": "",
+        "message": "",
+        "data": [
+          {
+            "auto-proxy-ip-status": "",
+            "header-proxy-ip-status": "",
+            "header-proxy-type": "",
+            "concurrent-connections-per-source": "",
+            "proxy-ip-threshold-factor": "",
+            "proxy-ip-percent-present": "",
+            "observation-period": "",
+            "download-list": "",
+            "backup-status": ""
+          }
+        ]
+      }
+    },
+    {
+      "title": "Get Proxy IP Policy",
+      "operation": "get_proxy_ip_policy",
+      "description": "Retrieves the proxy IP policy details of the FortiDDoS appliance.",
+      "category": "investigation",
+      "annotation": "get_global_settings",
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "query": "",
+        "success": "",
+        "message": "",
+        "data": []
+      }
+    },
+    {
+      "title": "Get Do Not Track Policy",
+      "operation": "get_do_not_track_policy",
       "description": "Retrieves the global settings of the FortiDDoS appliance.",
       "category": "investigation",
       "annotation": "get_global_settings",
@@ -118,35 +584,125 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "value": "ddos_global_setting",
+          "value": "Do Not Track Policy",
           "options": [
-            "ddos-global-spp-switching-policy",
-            "ddos-global-spp-policy",
-            "ddos_global_spp_policy_group",
-            "ddos_global_setting",
-            "ddos_global_http_service_ports",
-            "ddos_global_udp_service_ports",
-            "ddos_global_sp_fdd",
-            "ddos_global_service_provider_address",
-            "ddos_global_ip_reputation",
-            "ddos_global_domain_reputation",
-            "ddos_global_proxy_ip",
-            "ddos_global_proxyip_policy",
-            "ddos_global_firewall_local_address",
-            "ddos_global_firewall_local_address6",
-            "ddos_global_firewall_address",
-            "ddos_global_firewall_address6",
-            "ddos_global_do_not_track_policy",
-            "ddos_global_do_not_track_policy6",
-            "ddos_global_firewall_policy",
-            "ddos_global_firewall_policy6",
-            "ddos_global_distress_acl",
-            "ddos_global_bypass_macs"
+            "Do Not Track Policy",
+            "Do Not Track Policy IPv6"
           ],
-          "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: ddos-global-spp-switching-policy, ddos-global-spp-policy, ddos_global_spp_policy_group, ddos_global_setting, ddos_global_http_service_ports, ddos_global_udp_service_ports, ddos_global_sp_fdd, ddos_global_service_provider_address, ddos_global_ip_reputation, ddos_global_domain_reputation, ddos_global_proxy_ip, ddos_global_proxyip_policy, ddos_global_firewall_local_address, ddos_global_firewall_local_address6, ddos_global_firewall_address, ddos_global_firewall_address6, ddos_global_do_not_track_policy, ddos_global_do_not_track_policy6, ddos_global_firewall_policy, ddos_global_firewall_policy6, ddos_global_distress_acl, ddos_global_bypass_macs"
+          "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: Do Not Track Policy, Do Not Track Policy IPv6"
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "success": "",
+        "query": "",
+        "data": [
+          {
+            "mkey": "",
+            "source-address": "",
+            "do-not-track-action": ""
+          }
+        ],
+        "message": ""
+      }
+    },
+    {
+      "title": "Get Access Control List",
+      "operation": "get_global_acl",
+      "description": "Retrieves the access control list details of global settings from the FortiDDoS appliance.",
+      "category": "investigation",
+      "annotation": "get_global_settings",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Resource Name",
+          "type": "select",
+          "name": "resource_name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Global Settings > Access Control List",
+          "value": "Access Control List",
+          "options": [
+            "Access Control List",
+            "Access Control List IPv6",
+            "Advanced Settings: Distress ACL"
+          ],
+          "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: Access Control List, Access Control List IPv6, Advanced Settings: Distress ACL."
+        }
+      ],
+      "conditional_output_schema": [
+        {
+          "condition": "{{this['resource_name'] === 'Access Control List' || this['resource_name'] === 'Access Control List IPv6'}}",
+          "output_schema": {
+            "success": "",
+            "query": "",
+            "data": [
+              {
+                "mkey": "",
+                "action": "",
+                "source-address": ""
+              }
+            ],
+            "message": ""
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'Advanced Settings: Distress ACL'}}",
+          "output_schema": [
+            {
+              "mkey": "",
+              "acl-enable": "",
+              "rrd-entry": "",
+              "fragment": "",
+              "fragment-type": "",
+              "tcp-control-flag": "",
+              "tcp-control-flag-options": "",
+              "ttl": "",
+              "ttl-value": "",
+              "dscp": "",
+              "dscp-value": "",
+              "protocol": "",
+              "protocol-number": "",
+              "icmp": "",
+              "icmp-type": "",
+              "icmp-code": "",
+              "source-ip": "",
+              "source-ipv4-netmask": "",
+              "destination": "",
+              "destination-ipv4-netmask": "",
+              "destination-subnet": "",
+              "destination-spp": "",
+              "source-port": "",
+              "source-port-start": "",
+              "source-port-end": "",
+              "destination-port": "",
+              "destination-port-start": "",
+              "destination-port-end": "",
+              "system-generated": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Get Bypass MAC",
+      "operation": "get_bypass_mac",
+      "description": "Retrieves the bypass MAC details of the FortiDDoS appliance.",
+      "category": "investigation",
+      "annotation": "get_global_settings",
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "query": "",
+        "success": "",
+        "message": "",
+        "data": [
+          {
+            "mkey": "",
+            "mac-address": ""
+          }
+        ]
+      }
     },
     {
       "title": "Get System Settings",
@@ -157,33 +713,381 @@
       "enabled": true,
       "parameters": [
         {
-          "title": "Resource Name",
+          "title": "Primary Resource Name",
           "type": "select",
-          "name": "resource_name",
+          "name": "primary_resource_name",
           "required": true,
           "visible": true,
           "editable": true,
-          "value": "interface",
+          "value": "Interface",
           "options": [
-            "interface",
-            "dns",
-            "route",
-            "HA",
-            "snmp_sysinfo",
-            "snmp_threshold",
-            "snmp_community",
-            "auth_radius",
-            "auth_LDAP",
-            "auth_tacacsplus",
-            "adminuser",
-            "accprofile",
-            "sysglobal",
-            "certificate_local"
+            "Network",
+            "High Availability",
+            "Admin",
+            "Authentication",
+            "SNMP",
+            "Certificate"
           ],
-          "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: interface, dns, route, HA, snmp_sysinfo, snmp_threshold, snmp_community, auth_radius, auth_LDAP, auth_tacacsplus, adminuser, accprofile, sysglobal, certificate_local"
+          "onchange": {
+            "Network": [
+              {
+                "title": "Resource Name",
+                "type": "select",
+                "name": "resource_name",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "Interface",
+                "options": [
+                  "Interface",
+                  "DNS",
+                  "Static Route"
+                ],
+                "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: Interface, DNS, Static Route."
+              }
+            ],
+            "Admin": [
+              {
+                "title": "Resource Name",
+                "type": "select",
+                "name": "resource_name",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "Settings",
+                "options": [
+                  "Admin User",
+                  "Access Profile",
+                  "Settings"
+                ],
+                "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: Admin User, Access Profile, Settings."
+              }
+            ],
+            "Authentication": [
+              {
+                "title": "Resource Name",
+                "type": "select",
+                "name": "resource_name",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "Auth Radius",
+                "options": [
+                  "Auth Radius",
+                  "Auth LDAP",
+                  "Auth TACACS+"
+                ],
+                "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: Auth Radius, Auth LDAP, Auth TACACS+"
+              }
+            ],
+            "SNMP": [
+              {
+                "title": "Resource Name",
+                "type": "select",
+                "name": "resource_name",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "System Information",
+                "tooltip": "System > SNMP",
+                "options": [
+                  "System Information",
+                  "SNMP Threshold",
+                  "Community"
+                ],
+                "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: System Information, SNMP Threshold, Community."
+              }
+            ]
+          },
+          "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: Network, High Availability, Admin, Authentication, SNMP, Certificate."
         }
       ],
-      "output_schema": {}
+      "conditional_output_schema": [
+        {
+          "condition": "{{this['resource_name'] === 'Auth LDAP'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "dn": "",
+                "cnid": "",
+                "port": "",
+                "state": "",
+                "domain": "",
+                "secure": "",
+                "server": "",
+                "profile": "",
+                "password": "",
+                "username": "",
+                "bind-type": "",
+                "is-spp-admin": "",
+                "trusted-host": "",
+                "is-system-admin": "",
+                "default-spp-policy-group": ""
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'Auth Radius' || this['resource_name'] === 'Auth TACACS+'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "port": "",
+                "state": "",
+                "domain": "",
+                "nas_ip": "",
+                "secret": "",
+                "server": "",
+                "profile": "",
+                "auth_prot": "",
+                "is-spp-admin": "",
+                "trusted-host": "",
+                "backup-secret": "",
+                "backup-server": "",
+                "is-system-admin": "",
+                "default-spp_policy-group": ""
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'SNMP Threshold'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "cpu": "",
+                "mem": "",
+                "logdisk": ""
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'System Information'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "status": "",
+                "contact": "",
+                "location": "",
+                "engine-id": "",
+                "description": ""
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'Community'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "mkey": "",
+                "name": "",
+                "hosts": [],
+                "events": "",
+                "status": "",
+                "hosts_count": "",
+                "query_v1_port": "",
+                "query_v2c_port": "",
+                "restrict_hosts": "",
+                "trap_v1_status": "",
+                "query_v1_status": "",
+                "trap_v2c_status": "",
+                "query_v2c_status": "",
+                "trap_v1_local_port": "",
+                "trap_v1_remote_port": "",
+                "trap_v2c_local_port": "",
+                "trap_v2c_remote_port": ""
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'Interface'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "ip": "",
+                "ip6": "",
+                "mkey": "",
+                "type": "",
+                "speed": "",
+                "expand": "",
+                "status": "",
+                "allowaccess": "",
+                "logical-name": "",
+                "asymmetric-mirror": "",
+                "dropped-packet-capture": "",
+                "forward-error-correction": ""
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'DNS'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "ip_second": "",
+                "ip_primary": ""
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'Static Route'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "gw": "",
+                "dest": "",
+                "mkey": "",
+                "status": "",
+                "interface": ""
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{this['primary_resource_name'] === 'High Availability'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "mode": "",
+                "port": "",
+                "arp_num": "",
+                "groupid": "",
+                "interval": "",
+                "override": "",
+                "priority": "",
+                "group-name": "",
+                "arp_interval": "",
+                "interface_list": "",
+                "hb-lost-threshold": ""
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'Settings'}}",
+          "output_schema": {
+            "data": [
+              {
+                "hostname": "",
+                "ssh-port": "",
+                "http-port": "",
+                "https-port": "",
+                "telnet-port": "",
+                "tls-version-1.1": "",
+                "tls-version-1.2": "",
+                "tls-version-1.3": "",
+                "remoteauthtimeout": "",
+                "admin-idle-timeout": "",
+                "sys-global-language": "",
+                "private-data-encryption": "",
+                "https-server-certificate": "",
+                "private-data-encryption-key": ""
+              }
+            ],
+            "query": "",
+            "message": "",
+            "success": ""
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'Admin User'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "mkey": "",
+                "theme": "",
+                "api-id": "",
+                "domain": "",
+                "hidden": "",
+                "passwd": "",
+                "profile": "",
+                "strategy": "",
+                "is-spp-admin": "",
+                "trusted-host": "",
+                "is-system-admin": "",
+                "allow-api-access": "",
+                "spp-policy-group": ""
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'Access Profile'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "log": "",
+                "mkey": "",
+                "system": "",
+                "monitor": "",
+                "global-settings": "",
+                "protection-profiles": ""
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{this['primary_resource_name'] === 'Certificate'}}",
+          "output_schema": {
+            "data": [
+              {
+                "sn": "",
+                "mkey": "",
+                "issuer": "",
+                "passwd": "",
+                "status": "",
+                "subject": "",
+                "validto": "",
+                "comments": "",
+                "version": "",
+                "extension": "",
+                "validfrom": ""
+              }
+            ],
+            "query": "",
+            "message": "",
+            "success": ""
+          }
+        }
+      ]
     },
     {
       "title": "Get Log Settings",
@@ -215,6 +1119,52 @@
             "alertemail_setting"
           ],
           "description": "Specify the name of the resource whose information you want to retrieve from FortiDDoS.\nFollowing are possible resource names: log_local, log_remote, log_setting_ddos_attack_remote, ddos_global_attack_event_purge, log_setting_snmp_trap_receivers, log_report, ddos_global_attack_report_purge, log_setting_remote_log_settings, alertemail_recipient, alertemail_server, alertemail_setting"
+        }
+      ],
+      "conditional_output_schema": [
+        {
+          "condition": "{{true}}",
+          "output_schema": {
+            "data": [],
+            "query": "",
+            "success": "",
+            "message": ""
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'log_local'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "event": "",
+                "status": "",
+                "diskfull": "",
+                "filesize": "",
+                "loglevel": "",
+                "event_category": ""
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'ddos_global_attack_report_purge'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "purge-end-date": "",
+                "purge-watermark": "",
+                "purge-start-date": "",
+                "manual-event-purge": "",
+                "automatic-event-purge": ""
+              }
+            ]
+          }
         }
       ]
     },
@@ -302,7 +1252,75 @@
           "description": "Specify period to retrieves attack information from FortiDDoS. You can choose between: top_attacks, top_attackers, top_acl_attacks, top_attacked_spps, top_attacked_acl_spps, top_attacked_subnets, top_acl_subnets, top_attacked_destinations, top_attacked_protocols, top_attacked_tcp_ports, top_attacked_udp_ports, top_attacked_icmp_type_codes, top_attacked_http_methods, top_attacked_http_cookies, top_attacked_http_referers, top_attacked_http_user_agents, top_attacked_http_hosts, top_attacked_http_urls, top_attacked_dns_servers, top_attacked_dns_anomalies."
         }
       ],
-      "output_schema": {}
+      "conditional_output_schema": [
+        {
+          "condition": "{{true}}",
+          "output_schema": {
+            "data": [],
+            "total": "",
+            "success": "",
+            "message": ""
+          }
+        },
+        {
+          "condition": "{{this['subtype'] === 'top_attackers' || this['subtype'] === 'top_attacked_destinations'}}",
+          "output_schema": {
+            "data": [
+              {
+                "IP": "",
+                "SPP": "",
+                "Direction": "",
+                "Events": "",
+                "Drops": "",
+                "spp-id": ""
+              }
+            ],
+            "total": "",
+            "success": "",
+            "message": ""
+          }
+        },
+        {
+          "condition": "{{this['subtype'] === 'top_attacked_tcp_ports' || this['subtype'] === 'top_attacked_udp_ports'}}",
+          "output_schema": {
+            "data": [
+              {
+                "Port": "",
+                "SPP": "",
+                "Direction": "",
+                "Events": "",
+                "Drops": "",
+                "spp-id": ""
+              }
+            ],
+            "total": "",
+            "success": "",
+            "message": ""
+          }
+        },
+        {
+          "condition": "{{this['subtype'] === 'top_attacked_icmp_type_codes'}}",
+          "output_schema": {
+            "data": [
+              {
+                "Type:Code": "",
+                "SPP": "",
+                "Direction": "",
+                "Events": "",
+                "Drops": "",
+                "spp-id": ""
+              }
+            ],
+            "total": "",
+            "success": "",
+            "message": ""
+          }
+        },
+        {
+          "condition": "{{this['subtype'] === 'top_attacks' || this['subtype'] === 'top_attacked_dns_servers' || this['subtype'] === 'top_attacked_dns_anomalies'}}",
+          "output_schema": []
+        }
+      ]
     },
     {
       "title": "Add Distress ACL",
@@ -319,7 +1337,7 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "description": "MKey Name to add a new SPP to the FortiDDoS."
+          "description": "MKey Name to add a new distress ACL to the FortiDDoS."
         },
         {
           "title": "ACL Enable",
@@ -358,16 +1376,6 @@
             ],
             "all": [
               {
-                "title": "Destination IPv4 Netmask",
-                "type": "text",
-                "name": "destination-ipv4-netmask",
-                "required": false,
-                "visible": true,
-                "editable": true,
-                "value": "0.0.0.0/0",
-                "description": "Specify Destination IPv4 Netmask to add a new Distress ACL into the FortiDDoS."
-              },
-              {
                 "title": "SPP Name",
                 "type": "text",
                 "name": "spp",
@@ -376,6 +1384,16 @@
                 "editable": true,
                 "value": "SPP-0",
                 "description": "Specify SPP name to add a new Distress ACL into the FortiDDoS."
+              },
+              {
+                "title": "Destination IPv4 Netmask",
+                "type": "text",
+                "name": "destination-ipv4-netmask",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "value": "0.0.0.0/0",
+                "description": "Specify Destination IPv4 Netmask to add a new Distress ACL into the FortiDDoS."
               }
             ]
           },
@@ -419,7 +1437,7 @@
                 "visible": true,
                 "editable": true,
                 "value": "1000000",
-                "description": "Specify threshold per million to add a new Distress ACL in FortiDDoS."
+                "description": "Specify threshold per million to add a new Distress ACL in FortiDDoS. Eg: 1000000"
               }
             ]
           },
@@ -601,7 +1619,35 @@
           },
           "description": "Select this TTL checkbox to add a new Distress ACL in FortiDDoS. If you select this checkbox, then you must specify the following parameter: TTL Value."
         }
-      ]
+      ],
+      "output_schema": {
+        "status": "",
+        "message": ""
+      }
+    },
+    {
+      "title": "Delete Distress ACL",
+      "operation": "delete_distress_acl",
+      "description": "Delete Distress ACL based on the name you have provided.",
+      "category": "remediation",
+      "annotation": "delete_distress_acl",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Distress ACL Name",
+          "description": "Specify the name of the distress ACL.",
+          "type": "text",
+          "name": "name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "The name of the distress ACL which you want to delete."
+        }
+      ],
+      "output_schema": {
+        "status": "",
+        "message": ""
+      }
     },
     {
       "title": "Add Service Protection Profile Policy",
@@ -665,8 +1711,7 @@
               }
             ]
           },
-          "description": "Select this P version to add a new SPP policy in FortiDDoS. If you select IPv4 option, then you must specify the following parameter: IPv4/Netmask. If you select IPv6 option, then you must specify the following parameter: IPv6/Prefix."
-
+          "description": "Select this IP version to add a new SPP policy in FortiDDoS. If you select IPv4 option, then you must specify the following parameter: IPv4/Netmask. If you select IPv6 option, then you must specify the following parameter: IPv6/Prefix."
         },
         {
           "title": "SPP",
@@ -735,70 +1780,64 @@
           "value": "Added via FortiSOAR",
           "description": "Specify comment at the time of add a new SPP policy in FortiDDoS."
         }
-      ]
+      ],
+      "output_schema": {
+        "status": "",
+        "message": ""
+      }
     },
     {
-      "title": "Update Service Protection Profile Settings",
-      "operation": "update_service_protection_profile_settings",
-      "description": "Update Service Protection Profile Settings (SPP) based on the inputs provided.",
+      "title": "Get Service Protection Profile Policy",
+      "operation": "get_service_protection_profile_policy",
+      "description": "Get list of Service Protection Profile Policy or specific policy details based on the given policy name.",
+      "category": "investigation",
+      "annotation": "get_service_protection_profile_policy",
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "data": [
+          {
+            "mkey": "",
+            "subnet-id": "",
+            "ip-version": "",
+            "ip-addr-mask": "",
+            "ipv6-addr-prefix": "",
+            "spp": "",
+            "alt-spp-enable": "",
+            "alt-spp": "",
+            "threshold": "",
+            "threshold-mbps": "",
+            "threshold-per-million": "",
+            "comment": ""
+          }
+        ],
+        "query": "",
+        "success": "",
+        "message": ""
+      }
+    },
+    {
+      "title": "Delete Service Protection Profile Policy",
+      "operation": "delete_service_protection_profile_policy",
+      "description": "Delete Service Protection Profile Policy based on the given policy name",
       "category": "remediation",
-      "annotation": "update_service_protection_profile_settings",
+      "annotation": "delete_service_protection_profile_policy",
       "enabled": true,
       "parameters": [
         {
-          "title": "SPP Name",
+          "title": "SPP Policy Name",
+          "description": "Specify the name of the policy which you want to delete.",
           "type": "text",
-          "name": "spp",
+          "name": "policy_name",
           "required": true,
           "visible": true,
-          "editable": true,
-          "value": "SPP-0",
-          "tooltip": "Name of the service protection profile",
-          "description": "Name of the Service protection profile to update SPP settings."
-        },
-        {
-          "title": "Resource Name",
-          "type": "select",
-          "name": "resource_name",
-          "required": true,
-          "visible": true,
-          "editable": true,
-          "value": "ddos_spp_setting",
-          "options": [
-            "ddos_spp_setting",
-            "ddos_spp_firewall_service",
-            "ddos_spp_firewall_policy",
-            "ddos_spp_firewall_address",
-            "ddos_spp_firewall_address6",
-            "ddos_spp_tcp_session_extended_timeout_policy",
-            "ddos_spp_threshold_scalar",
-            "ddos_spp_threshold_http_methods",
-            "ddos_spp_threshold_protocol",
-            "ddos_spp_threshold_tcp_ports",
-            "ddos_spp_threshold_udp_ports",
-            "ddos_spp_threshold_icmp_type_codes",
-            "ddos_spp_threshold_http_urls",
-            "ddos_spp_threshold_http_hosts",
-            "ddos_spp_threshold_http_referers",
-            "ddos_spp_threshold_http_cookies",
-            "ddos_spp_threshold_http_user_agents"
-          ],
-          "description": "Specify the name of the resource whose setting you want to update.\nFollowing are possible resource names: ddos_spp_setting, ddos_spp_firewall_service, ddos_spp_firewall_policy, ddos_spp_firewall_address, ddos_spp_firewall_address6, ddos_spp_tcp_session_extended_timeout_policy, ddos_spp_threshold_scalar, ddos_spp_threshold_http_methods, ddos_spp_threshold_protocol, ddos_spp_threshold_tcp_ports, ddos_spp_threshold_udp_ports, ddos_spp_threshold_icmp_type_codes, ddos_spp_threshold_http_urls, ddos_spp_threshold_http_hosts, ddos_spp_threshold_http_referers, ddos_spp_threshold_http_cookies, ddos_spp_threshold_http_user_agents."
-        },
-        {
-          "title": "SPP Settings Arguments",
-          "required": true,
-          "visible": true,
-          "editable": true,
-          "type": "json",
-          "name": "parameter_name_val",
-          "tooltip": "SPP settings arguments in json format",
-          "placeholder": "{\"field1\":value1, \"field2\":value2}",
-          "value": {"inbound-operating-mode":  "prevention"},
-          "description": "Specify SPP setting arguments in JSON format at the time of update the SPP setting. You can enter the arguments in the following format: {\"field1\":value1, \"field2\":value2}. Eg: {\"inbound-operating-mode\":  \"prevention\"}"
+          "editable": true
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "status": "",
+        "message": ""
+      }
     },
     {
       "title": "Add Legitimate DNS Query",
@@ -808,8 +1847,7 @@
       "annotation": "add_lq",
       "enabled": true,
       "output_schema": {
-        "data": "",
-        "success": "",
+        "status": "",
         "message": ""
       },
       "parameters": [
@@ -885,47 +1923,6 @@
       "output_schema": {}
     },
     {
-      "title": "Delete Service Protection Profile Policy",
-      "operation": "delete_service_protection_profile_policy",
-      "description": "Delete Service Protection Profile Policy based on the given policy name",
-      "category": "remediation",
-      "annotation": "delete_service_protection_profile_policy",
-      "enabled": true,
-      "parameters": [
-        {
-          "title": "SPP Policy Name",
-          "description": "Specify the name of the policy which you want to delete.",
-          "type": "text",
-          "name": "policy_name",
-          "required": true,
-          "visible": true,
-          "editable": true
-        }
-      ],
-      "output_schema": {}
-    },
-    {
-      "title": "Delete Distress ACL",
-      "operation": "delete_distress_acl",
-      "description": "Delete Distress ACL based on the name you have provided.",
-      "category": "remediation",
-      "annotation": "delete_distress_acl",
-      "enabled": true,
-      "parameters": [
-        {
-          "title": "Distress ACL Name",
-          "description": "Specify the name of the distress ACL.",
-          "type": "text",
-          "name": "name",
-          "required": true,
-          "visible": true,
-          "editable": true,
-          "tooltip": "The name of the distress ACL which you want to delete."
-        }
-      ],
-      "output_schema": {}
-    },
-    {
       "title": "Generate BGP Flowspec",
       "operation": "generate_bgp_flowspec",
       "description": "Generate BGP flow specifications based on the input you have provided.",
@@ -967,7 +1964,7 @@
           "editable": true
         }
       ],
-      "output_schema": {}
+      "output_schema": ""
     }
   ]
 }

@@ -12,8 +12,9 @@ logger = get_logger(LOGGER_NAME)
 
 
 def add_service_protection_profile_policy(config, params):
+    mkey = params.get('mkey')
     ddos_conn = MakeRestApiCall(config)
-    ddos_conn.headers = {'Accept': '*/*', 'Content-Type': 'application/json'}
+    ddos_conn.headers.update({'Accept': '*/*', 'Content-Type': 'application/json'})
     data = ddos_conn.build_query(params)
     ep = "/api/v2/ddos/global/ddos_global_spp_policy/"
     if data.get('alt-spp-enable') == 'disable':
@@ -26,4 +27,6 @@ def add_service_protection_profile_policy(config, params):
     request_body = {'data': data}
     rq = json.dumps(request_body)
     api_response = ddos_conn.make_request(method='POST', endpoint=ep, data=rq)
-    return api_response
+    return {"status": "success",
+            "message": "{0} created successfully.".format(mkey)} if api_response == '' else {
+        "status": "failed", "message": "Failed to create {0}.".format(mkey)}

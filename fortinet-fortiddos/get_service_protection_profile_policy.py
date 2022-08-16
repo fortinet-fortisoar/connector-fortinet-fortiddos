@@ -10,12 +10,8 @@ from .utils import MakeRestApiCall
 logger = get_logger(LOGGER_NAME)
 
 
-def get_attack_information(config, params):
-    ep = "/api/v2/drop_stats"
+def get_service_protection_profile_policy(config, params):
     ddos_conn = MakeRestApiCall(config)
-    query_str = ddos_conn.build_query(params, make_str=True)
-    if query_str:
-        ep += '?' + query_str
+    ep = "/api/v2/ddos/global/ddos_global_spp_policy/"
     response = ddos_conn.make_request(endpoint=ep)
-    return [] if response == '' else response
-
+    return response

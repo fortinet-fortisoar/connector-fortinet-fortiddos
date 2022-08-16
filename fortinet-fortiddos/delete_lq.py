@@ -17,6 +17,8 @@ def delete_lq(config, params):
     ddos_conn = MakeRestApiCall(config)
     endpoint = "/api/v2/legitimate_queries/?{query},{type},{class_val}".format(query=query, type=type,
                                                                                class_val=class_val)
-    ddos_conn.headers = {'Content-Type': 'application/json'}
+    ddos_conn.headers.update({'Content-Type': 'application/json'})
     api_response = ddos_conn.make_request(method='DELETE', endpoint=endpoint)
-    return api_response
+    return {"status": "success",
+            "message": "{0} deleted successfully.".format(query)} if api_response == '' else {
+        "status": "failed", "message": "Failed to delete {0}.".format(query)}
