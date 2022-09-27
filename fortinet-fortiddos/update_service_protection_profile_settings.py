@@ -16,6 +16,8 @@ def update_service_protection_profile_settings(config, params):
     resource_name = params.get('resource_name')
     response = get_spp_settings(config, params)
     spp_args = params.get('parameter_name_val')
+    if not response.get('data'):
+        raise ConnectorError('No data for "{}" resource.'.format(resource_name))
     data = response.get('data')[0]
     data.update(spp_args)
     request_body = {'data': data}
