@@ -18,7 +18,7 @@
           "uuid": "ace529e2-939f-46b5-85af-d9c8481b6d7e",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Retrieves the Protection Profiles details from FortiDDoS appliance of the given SPP name.",
+          "description": "Retrieves the Protection Profiles details from the FortiDDoS appliance based on the Service Protection Profile (SPP) name and resource name you have specified.",
           "name": "Get Protection Profiles",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -101,7 +101,7 @@
           "uuid": "34a29aa3-20c1-4769-ac93-d92f3af14b63",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Update Service Protection Profile (SPP) settings based on the inputs provided.",
+          "description": "Updates the SPP settings based on the SPP name, resource name, and resource arguments you have specified.",
           "name": "Update SPP Settings",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -187,7 +187,7 @@
           "uuid": "32d9c5b0-7f33-41fb-ba38-ebbb5d2a8e2b",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Retrieves settings from the global settings (Global Settings > Settings > Settings) of the FortiDDoS appliance.",
+          "description": "Retrieves all global settings from the FortiDDoS appliance. The global settings are located at: Global Settings > Settings > Settings.",
           "name": "Get Global Settings",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -267,7 +267,7 @@
           "uuid": "5e64b31b-785c-4223-97ce-b7f96432406e",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Retrieves the global service protection profile (Global Settings > Service Protection Profiles) details from the FortiDDoS appliance.",
+          "description": "Retrieves the global service protection profile from the FortiDDoS appliance based on the resource name you have specified. The global service protection profiles are located at: Global Settings > Service Protection Profiles.",
           "name": "Get Global Service Protection Profiles",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -349,7 +349,7 @@
           "uuid": "1f1ed298-cd61-4e0f-8fbd-16a22fed89c1",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Retrieves the internal sub resources from settings of the FortiDDoS global settings.",
+          "description": "Retrieves the internal sub-resources from settings in the FortiDDoS global settings based on the resource name you have specified.",
           "name": "Get Settings",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -431,7 +431,7 @@
           "uuid": "1f1fc426-b28c-4ac3-8d83-1e8b2977ef82",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Retrieves the global setting address of the FortiDDoS appliance.",
+          "description": "Retrieves the global setting address of the FortiDDoS appliance based on the resource name you have specified.",
           "name": "Get Global Settings Address",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -513,7 +513,7 @@
           "uuid": "fbefd90a-a62b-4b0c-a9b0-153ced9f1f1b",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Retrieves the IP reputation details of the FortiDDoS appliance.",
+          "description": "Retrieves the IP reputation details of the FortiDDoS appliance. The IP reputation details are located at: Global Settings > IP Reputation.",
           "name": "Get IP Reputation",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -593,7 +593,7 @@
           "uuid": "64c5bda2-c507-43e8-b26c-6db95efca218",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Retrieves the Domain reputation details of the FortiDDoS appliance.",
+          "description": "Retrieves the domain reputation details of the FortiDDoS appliance. The IP reputation details are located at: Global Settings > Domain Reputation.",
           "name": "Get Domain Reputation",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -833,7 +833,7 @@
           "uuid": "26748f54-1c4d-4644-b6e9-5a6a4121e87c",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Retrieves the global settings of the FortiDDoS appliance.",
+          "description": "Retrieves the 'do not track policy' settings of the FortiDDoS appliance based on the resource name you have specified.",
           "name": "Get Do Not Track Policy",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -1077,7 +1077,7 @@
           "uuid": "44fc396f-1e83-4630-a5f7-2e9514b7be6e",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Retrieves the system settings information from FortiDDoS.",
+          "description": "Retrieves the system settings information from FortiDDoS based on the resource name you have specified.",
           "name": "Get System Settings",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -1160,7 +1160,7 @@
           "uuid": "51bf1998-a40f-4935-8fb9-9c0aed27572d",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Retrieves log information from the FortiDDoS.",
+          "description": "Retrieves log information from the FortiDDoS appliance based on the resource name you have specified.",
           "name": "Get Log Settings",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -1242,7 +1242,7 @@
           "uuid": "07c0f162-7aa3-4187-a7e3-2c971c7326d2",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Retrieves attack information from FortiDDoS based on the SPP, Direction and Period you have specified.",
+          "description": "Retrieves all attack information or specific attack information from FortiDDoS based on the SPP Name, Direction, and Period you have specified.",
           "name": "Get Attack Information",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -1327,7 +1327,7 @@
           "uuid": "79b8998c-6e22-465d-ba86-a54e6c62493d",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Add a new Distress ACL in FortiDDoS based on the parameters you have specified.",
+          "description": "Adds a new Distress ACL to the FortiDDoS appliance based on the Mkey, destination, and other input parameters you have specified.",
           "name": "Add Distress ACL",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -1422,7 +1422,7 @@
           "uuid": "016f5c2c-2829-4f24-a005-120b431c5f1b",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Delete Distress ACL based on the name you have provided.",
+          "description": "Deletes a specific Distress ACL from the FortiDDoS appliance based on the name of the distress ACL you have specified.",
           "name": "Delete Distress ACL",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -1502,7 +1502,7 @@
           "uuid": "56a594b7-164b-4e73-9737-2f02d4a9b2c0",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Adds a new SPP to the FortiDDoS based on the input parameters you have specified.",
+          "description": "Adds a new SPP profile to the FortiDDoS appliance based on subnet ID, Mkey name, IP version, and the input parameters you have specified.",
           "name": "Add Service Protection Profile Policy",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -1587,7 +1587,7 @@
           "uuid": "d6012e9a-8f7e-4ebf-840f-f3f5af1ca54f",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Get list of Service Protection Profile Policy or specific policy details based on the given policy name.",
+          "description": "Retrieves a list of all Service Protection Profile Policies from the FortiDDoS appliance.",
           "name": "Get Service Protection Profile Policy",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -1667,7 +1667,7 @@
           "uuid": "f2d7eb6b-6425-4ee4-8335-1254a4a720f3",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Delete Service Protection Profile Policy based on the given policy name",
+          "description": "Deletes a specific Service Protection Profile Policy from the FortiDDoS appliance based on the name of the SPP policy you have specified.",
           "name": "Delete Service Protection Profile Policy",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -1747,7 +1747,7 @@
           "uuid": "5e19e1f5-2346-4b78-92ac-189ec7a02df8",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Adds a new Legitimate DNS Query to the FortiDDoS based on the input parameters you have specified.",
+          "description": "Adds a new legitimate DNS Query to the FortiDDoS appliance based on the query, type, and other input parameters you have specified.",
           "name": "Add Legitimate DNS Query",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -1831,7 +1831,7 @@
           "uuid": "d054a2c8-b4e3-4dcb-8829-0c8bc8eae6ce",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Deletes legitimate DNS query from a specific from FortiDDoS based on the Domain and Type you have specified.",
+          "description": "Deletes a specific legitimate DNS query from the FortiDDoS appliance based on the domain, type, and class you have specified.",
           "name": "Delete Legitimate DNS Query",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
@@ -1915,7 +1915,7 @@
           "uuid": "aeaedaf1-bfcf-4c4f-86e1-bc5cb801a8a9",
           "collection": "/api/3/workflow_collections/7997ab76-41ab-4642-93cd-b648dc3da858",
           "triggerLimit": null,
-          "description": "Generate BGP flow specifications based on the input you have provided.",
+          "description": "Generate BGP flow specifications based on the vendor name, destination under attack, and threshold you have specified.",
           "name": "Generate BGP Flowspec",
           "tag": "#Fortinet FortiDDoS",
           "recordTags": [
