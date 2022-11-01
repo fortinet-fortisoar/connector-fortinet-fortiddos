@@ -237,7 +237,7 @@
           "editable": true,
           "type": "json",
           "name": "parameter_name_val",
-          "tooltip": "SPP settings arguments in json format",
+          "tooltip": "Resource arguments in json format",
           "placeholder": "{\"field1\":value1, \"field2\":value2}",
           "value": {
             "inbound-operating-mode": "prevention"
@@ -326,11 +326,16 @@
       ],
       "conditional_output_schema": [
         {
-          "condition": "{{true}}",
+          "condition": "{{this['resource_name'] === 'SPP Policy Group'}}",
           "output_schema": {
             "success": "",
             "query": "",
-            "data": [],
+            "data": [
+              {
+                "mkey": "",
+                "member-list": ""
+              }
+            ],
             "message": ""
           }
         },
@@ -349,13 +354,37 @@
               }
             ]
           }
+        },
+        {
+          "condition": "{{this['resource_name'] === 'SPP Policy'}}",
+          "output_schema": {
+            "query": "",
+            "success": "",
+            "message": "",
+            "data": [
+              {
+                "spp": "",
+                "mkey": "",
+                "alt-spp": "",
+                "comment": "",
+                "subnet-id": "",
+                "threshold": "",
+                "ip-version": "",
+                "ip-addr-mask": "",
+                "alt-spp-enable": "",
+                "threshold-mbps": "",
+                "ipv6-addr-prefix": "",
+                "threshold-per-million": ""
+              }
+            ]
+          }
         }
       ]
     },
     {
       "title": "Get Settings",
       "operation": "get_settings",
-      "description": "Retrieves the internal sub-resources from settings in the FortiDDoS global settings based on the resource name you have specified.",
+      "description": "Retrieves the internal sub-resources from settings in the FortiDDoS global settings based on the resource name you have specified. The global settings are located at: Global Settings > Settings.",
       "category": "investigation",
       "annotation": "get_global_settings",
       "enabled": true,
@@ -373,9 +402,9 @@
             "HTTP Service Ports",
             "UDP Service Ports",
             "Signaling",
-            "Service Provider Address"
+            "GRE Tunnel Endpoint"
           ],
-          "description": "Select the name of the resource whose internal sub-resources you want to retrieve from settings in FortiDDoS. You can choose from the following options: HTTP Service Ports, UDP Service Ports, Signaling, Service Provider Address."
+          "description": "Select the name of the resource whose internal sub-resources you want to retrieve from settings in FortiDDoS. You can choose from the following options: HTTP Service Ports, UDP Service Ports, Signaling, GRE Tunnel Endpoint."
         }
       ],
       "output_schema": {
@@ -1171,7 +1200,7 @@
     {
       "title": "Get Attack Information",
       "operation": "get_attack_information",
-      "description": "Retrieves all attack information or specific attack information from FortiDDoS based on the SPP Name, Direction, and Period you have specified.",
+      "description": "Retrieves attack information from FortiDDoS based on the SPP name, attack subtype, direction, and period you have specified.",
       "category": "investigation",
       "annotation": "get_attack_information",
       "enabled": true,
@@ -1180,12 +1209,44 @@
           "title": "SPP",
           "type": "text",
           "name": "spp_name",
-          "required": false,
+          "required": true,
           "visible": true,
           "editable": true,
           "value": "SPP-0",
           "tooltip": "Name of the service protection profile",
           "description": "Specify the name of the Service Protection Profile (SPP) whose attack information you want to retrieve from FortiDDoS."
+        },
+        {
+          "title": "Subtype",
+          "type": "select",
+          "name": "subtype",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "top_attacks",
+          "options": [
+            "top_attacks",
+            "top_attackers",
+            "top_acl_attacks",
+            "top_attacked_spps",
+            "top_attacked_acl_spps",
+            "top_attacked_subnets",
+            "top_acl_subnets",
+            "top_attacked_destinations",
+            "top_attacked_protocols",
+            "top_attacked_tcp_ports",
+            "top_attacked_udp_ports",
+            "top_attacked_icmp_type_codes",
+            "top_attacked_http_methods",
+            "top_attacked_http_cookies",
+            "top_attacked_http_referers",
+            "top_attacked_http_user_agents",
+            "top_attacked_http_hosts",
+            "top_attacked_http_urls",
+            "top_attacked_dns_servers",
+            "top_attacked_dns_anomalies"
+          ],
+          "description": "Select the name of the subtype for which you want to retrieve attack information from FortiDDoS. You can choose the following options: top_attacks, top_attackers, top_acl_attacks, top_attacked_spps, top_attacked_acl_spps, top_attacked_subnets, top_acl_subnets, top_attacked_destinations, top_attacked_protocols, top_attacked_tcp_ports, top_attacked_udp_ports, top_attacked_icmp_type_codes, top_attacked_http_methods, top_attacked_http_cookies, top_attacked_http_referers, top_attacked_http_user_agents, top_attacked_http_hosts, top_attacked_http_urls, top_attacked_dns_servers, top_attacked_dns_anomalies. The attack information located at: Log & Report > Executive Summary > DDoS Attack Log."
         },
         {
           "title": "Direction",
@@ -1218,38 +1279,6 @@
             "1 year"
           ],
           "description": "Specify the period to retrieve attack information from FortiDDoS. You can choose between 1 hour, 8 hours, 1 day, 1 week, 1 month, or 1 year."
-        },
-        {
-          "title": "Subtype",
-          "type": "select",
-          "name": "subtype",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "value": "top_attacks",
-          "options": [
-            "top_attacks",
-            "top_attackers",
-            "top_acl_attacks",
-            "top_attacked_spps",
-            "top_attacked_acl_spps",
-            "top_attacked_subnets",
-            "top_acl_subnets",
-            "top_attacked_destinations",
-            "top_attacked_protocols",
-            "top_attacked_tcp_ports",
-            "top_attacked_udp_ports",
-            "top_attacked_icmp_type_codes",
-            "top_attacked_http_methods",
-            "top_attacked_http_cookies",
-            "top_attacked_http_referers",
-            "top_attacked_http_user_agents",
-            "top_attacked_http_hosts",
-            "top_attacked_http_urls",
-            "top_attacked_dns_servers",
-            "top_attacked_dns_anomalies"
-          ],
-          "description": "Select the name of the subtype for which you want to retrieve attack information from FortiDDoS. You can choose the following options: top_attacks, top_attackers, top_acl_attacks, top_attacked_spps, top_attacked_acl_spps, top_attacked_subnets, top_acl_subnets, top_attacked_destinations, top_attacked_protocols, top_attacked_tcp_ports, top_attacked_udp_ports, top_attacked_icmp_type_codes, top_attacked_http_methods, top_attacked_http_cookies, top_attacked_http_referers, top_attacked_http_user_agents, top_attacked_http_hosts, top_attacked_http_urls, top_attacked_dns_servers, top_attacked_dns_anomalies."
         }
       ],
       "conditional_output_schema": [
@@ -1371,7 +1400,8 @@
                 "visible": true,
                 "editable": true,
                 "placeholder": "eg. 0.0.0.0/0",
-                "description": "Specify the destination IPv4 Netmask to add to the new Distress ACL in the FortiDDoS."
+                "tooltip": "Example: 192.3.2.5/24",
+                "description": "Specify the destination IPv4 Netmask to add to the new Distress ACL in the FortiDDoS. Example: 192.3.2.5/24"
               }
             ],
             "all": [
@@ -1393,7 +1423,8 @@
                 "visible": true,
                 "editable": true,
                 "value": "0.0.0.0/0",
-                "description": "Specify the destination IPv4 Netmask to add to the new Distress ACL in the FortiDDoS."
+                "tooltip": "Example: 192.3.2.5/24",
+                "description": "Specify the destination IPv4 Netmask to add to the new Distress ACL in the FortiDDoS. Example: 192.3.2.5/24"
               }
             ]
           },
@@ -1416,7 +1447,8 @@
                 "required": true,
                 "visible": true,
                 "editable": true,
-                "description": "Specify the start of the destination port that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance."
+                "tooltip": "Range: 0 - 65535",
+                "description": "Specify the start of the destination port that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance. Range: 0 - 65535"
               },
               {
                 "title": "Destination Port End",
@@ -1425,7 +1457,8 @@
                 "required": true,
                 "visible": true,
                 "editable": true,
-                "description": "Specify the end of the destination port that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance."
+                "tooltip": "Range: 0 - 65535",
+                "description": "Specify the end of the destination port that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance. Range: 0 - 65535"
               }
             ],
             "false": [
@@ -1437,7 +1470,8 @@
                 "visible": true,
                 "editable": true,
                 "value": "1000000",
-                "description": "Specify the threshold per million that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance. For example, 1000000"
+                "tooltip": "Range: 1 - 1000000",
+                "description": "Specify the threshold per million that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance. For example, 1000000 Range: 1 - 1000000"
               }
             ]
           },
@@ -1460,11 +1494,13 @@
                 "required": true,
                 "visible": true,
                 "editable": true,
-                "description": "Specify the DSCP value that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance."
+                "tooltip": "ToS Value. Range: 0 - 255",
+                "description": "Specify the DSCP(ToS) value that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance. Range: 0 - 255"
               }
             ]
           },
-          "description": "Select the DSCP option if you want to add the DSCP value information to the new Distress ACL that you are adding to the FortiDDoS appliance."
+          "tooltip": "ToS",
+          "description": "Select the DSCP(ToS) option if you want to add the DSCP value information to the new Distress ACL that you are adding to the FortiDDoS appliance."
         },
         {
           "title": "Fragment",
@@ -1512,7 +1548,8 @@
                 "required": true,
                 "visible": true,
                 "editable": true,
-                "description": "Specify the protocol number that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance."
+                "tooltip": "Range: 0 - 255",
+                "description": "Specify the protocol number that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance. Range: 0 - 255"
               }
             ]
           },
@@ -1535,7 +1572,8 @@
                 "required": true,
                 "visible": true,
                 "editable": true,
-                "description": "Specify the source IP ipv4 netmask information that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance.."
+                "tooltip": "Example: 192.3.2.5/24",
+                "description": "Specify the source IP ipv4 netmask information that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance. Example: 192.3.2.5/24"
               }
             ]
           },
@@ -1555,19 +1593,21 @@
                 "title": "Source Port Start",
                 "type": "text",
                 "name": "source-port-start",
-                "required": false,
+                "required": true,
                 "visible": true,
                 "editable": true,
-                "description": "Specify the start of the source port that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance."
+                "tooltip": "Range: 0 - 65535",
+                "description": "Specify the start of the source port that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance. Range: 0 - 65535"
               },
               {
                 "title": "Source Port End",
                 "type": "text",
                 "name": "source-port-end",
-                "required": false,
+                "required": true,
                 "visible": true,
                 "editable": true,
-                "description": "Specify the end of the source port that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance."
+                "tooltip": "Range: 0 - 65535",
+                "description": "Specify the end of the source port that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance. Range: 0 - 65535"
               }
             ]
           },
@@ -1590,7 +1630,8 @@
                 "required": false,
                 "visible": true,
                 "editable": true,
-                "description": "Specify the TCP control flag options information that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance."
+                "tooltip": "FIN SYN RST PSH ACK URG",
+                "description": "Specify the TCP control flag options information that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance. You can specify values as: FIN SYN RST PSH ACK URG"
               }
             ]
           },
@@ -1613,7 +1654,8 @@
                 "required": true,
                 "visible": true,
                 "editable": true,
-                "description": "Specify the TTL value that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance."
+                "tooltip": "Range: 0 - 255",
+                "description": "Specify the TTL value that you want to add to the new Distress ACL that you are adding to the FortiDDoS appliance. Range: 0 - 255"
               }
             ]
           },
@@ -1652,11 +1694,22 @@
     {
       "title": "Add Service Protection Profile Policy",
       "operation": "add_service_protection_profile_policy",
-      "description": "Adds a new SPP profile to the FortiDDoS appliance based on subnet ID, Mkey name, IP version, and the input parameters you have specified.",
+      "description": "Adds a new SPP Policy to the FortiDDoS appliance based on subnet ID, Mkey name, IP version, and the input parameters you have specified. The new SPP policy details are located at: Global Settings > Service Protection Profiles > SPP Policy.",
       "category": "remediation",
       "annotation": "add_service_protection_profile_policy",
       "enabled": true,
       "parameters": [
+        {
+          "title": "SPP",
+          "type": "text",
+          "name": "spp",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "SPP-0",
+          "tooltip": "Name of the service protection profile",
+          "description": "Specify the name of the Service protection profile to add the new SPP policy to the FortiDDoS appliance."
+        },
         {
           "title": "Subnet ID",
           "type": "text",
@@ -1664,7 +1717,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "description": "Specify the subnet ID to add the new SPP policy to the FortiDDoS appliance."
+          "tooltip": "Range: 1 - 2047",
+          "description": "Specify the subnet ID to add the new SPP policy to the FortiDDoS appliance. Range: 1 - 2047"
         },
         {
           "title": "MKey Name",
@@ -1673,7 +1727,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "description": "Specify the name of the MKey Name to add the new SPP policy to the FortiDDoS appliance."
+          "tooltip": "SPP Policy Name",
+          "description": "Specify the name of the MKey (SPP Policy) to add the new SPP policy to the FortiDDoS appliance."
         },
         {
           "title": "IP Version",
@@ -1696,7 +1751,8 @@
                 "required": true,
                 "visible": true,
                 "editable": true,
-                "description": "Specify the IPv4/Netmask to add the new SPP policy to the FortiDDoS appliance."
+                "tooltip": "Example: 192.3.2.5/24",
+                "description": "Specify the IPv4/Netmask to add the new SPP policy to the FortiDDoS appliance. Example: 192.3.2.5/24"
               }
             ],
             "IPv6": [
@@ -1704,25 +1760,15 @@
                 "title": "IPv6/Prefix",
                 "type": "text",
                 "name": "ipv6-addr-prefix",
-                "required": false,
+                "required": true,
                 "visible": true,
                 "editable": true,
-                "description": "Specify the IPv6/Prefix to add the new SPP policy to the FortiDDoS appliance"
+                "tooltip": "Example: 2001:0db8:85a3:8a2e:0370::7334/64",
+                "description": "Specify the IPv6/Prefix to add the new SPP policy to the FortiDDoS appliance. Example: 2001:0db8:85a3:8a2e:0370::7334/64"
               }
             ]
           },
           "description": "Select this IP version to add the new SPP policy to the FortiDDoS appliance. You can choose between IPv4 or IPv6."
-        },
-        {
-          "title": "SPP",
-          "type": "text",
-          "name": "spp",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "value": "SPP-0",
-          "tooltip": "Name of the service protection profile",
-          "description": "Specify the name of the Service protection profile to add the new SPP policy to the FortiDDoS appliance.."
         },
         {
           "title": "Alternate SPP Enable",
@@ -1752,7 +1798,8 @@
                 "visible": true,
                 "editable": true,
                 "value": "1000000",
-                "description": "Specify the threshold per million that you want to add to the new SPP that you are adding to the FortiDDoS appliance."
+                "tooltip": "Range: 1 - 1000000",
+                "description": "Specify the threshold per million that you want to add to the new SPP that you are adding to the FortiDDoS appliance. Range: 1 - 1000000"
               }
             ],
             "false": [
@@ -1764,7 +1811,8 @@
                 "visible": true,
                 "editable": true,
                 "value": "1000000",
-                "description": "Specify threshold per million to add a new SPP policy in FortiDDoS."
+                "tooltip": "Range: 1 - 1000000",
+                "description": "Specify threshold per million to add a new SPP policy in FortiDDoS. Range: 1 - 1000000"
               }
             ]
           },
@@ -1858,6 +1906,7 @@
           "required": true,
           "visible": true,
           "editable": true,
+          "tooltip": "Specify the query to add the new Legitimate DNS Query into the FortiDDoS appliance.",
           "description": "Specify the query to add the new Legitimate DNS Query into the FortiDDoS appliance."
         },
         {
@@ -1868,17 +1917,19 @@
           "visible": true,
           "editable": true,
           "value": "1",
+          "tooltip": "Specify the type to add the new Legitimate DNS Query into the FortiDDoS appliance.",
           "description": "Specify the type to add the new Legitimate DNS Query into the FortiDDoS appliance."
         },
         {
           "title": "Class",
           "type": "text",
           "name": "class",
-          "required": false,
+          "required": true,
           "visible": true,
           "editable": true,
           "value": "1",
-          "description": "(Optional) Specify the class to add a new Legitimate DNS Query into the FortiDDoS appliance."
+          "tooltip": "Specify the class to add a new Legitimate DNS Query into the FortiDDoS appliance.",
+          "description": "Specify the class to add a new Legitimate DNS Query into the FortiDDoS appliance."
         }
       ]
     },

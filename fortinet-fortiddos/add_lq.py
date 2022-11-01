@@ -18,6 +18,7 @@ def add_lq(config, params):
     request_body = {'data': data}
     rq = json.dumps(request_body)
     endpoint = "/api/v2/legitimate_queries/"
+    ddos_conn.headers.update({'Content-Type': 'application/json'})
     api_response = ddos_conn.make_request(method='POST', endpoint=endpoint, data=rq)
     return {"status": "success",
             "message": "{0} created successfully.".format(query)} if api_response == '' else {

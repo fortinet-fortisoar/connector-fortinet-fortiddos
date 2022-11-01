@@ -7,7 +7,7 @@ LOGGER_NAME = 'fortinet-fortiddos'
 CONVERT_LIST = ['alt-spp-enable', 'acl-enable', 'destination-port', 'dscp', 'fragment', 'protocol', 'source-ip',
                 'source-port', 'tcp-control-flag', 'ttl']
 CONVERT_STR = ['destination-port-end', 'threshold-per-million', 'protocol-number', 'ttl-value', 'class', 'threshold',
-               'subnet-id']
+               'subnet-id', 'destination-port-start', 'source-port-start', 'source-port-end', 'dscp-value']
 PARAM_MAPPING = {
     True: 'enable',
     False: 'disable',
@@ -48,7 +48,7 @@ RESOURCE_MAPPING = {
     "HTTP Service Ports": "ddos_global_http_service_ports",
     "UDP Service Ports": "ddos_global_udp_service_ports",
     "Signaling": "ddos_global_sp_fdd",
-    "Service Provider Address": "ddos_global_service_provider_address",
+    "GRE Tunnel Endpoint": "ddos_global_service_provider_address",
 
     "Local Address Config": "ddos_global_firewall_local_address",
     "Local Address Config IPv6": "ddos_global_firewall_local_address6",
@@ -80,3 +80,13 @@ RESOURCE_MAPPING = {
     "Settings": "sysglobal",
     "Certificate": "certificate_local"
 }
+
+error_msg = {
+    401: 'Authentication failed due to invalid credentials',
+    404: 'Not Found',
+    405: 'Method not allowed',
+    "ssl_error": 'SSL certificate validation failed',
+    'time_out': 'The request timed out while trying to connect to the remote server',
+}
+
+resources = ["Access Control List", "Address Config", "Address Config IPv6"]

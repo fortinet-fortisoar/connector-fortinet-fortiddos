@@ -4,7 +4,7 @@
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
 from connectors.core.connector import get_logger, ConnectorError
-from .constants import LOGGER_NAME
+from .constants import LOGGER_NAME, RESOURCE_MAPPING, resources
 from .get_spp_settings import get_spp_settings
 from .utils import MakeRestApiCall
 import json
@@ -25,8 +25,12 @@ def update_service_protection_profile_settings(config, params):
     ddos_conn = MakeRestApiCall(config)
     ddos_conn.headers.update({'Accept': '*/*', 'Content-Type': 'application/json'})
     spp = params.get('spp')
-    endpoint = "/api/v2/spp/{spp_name}/ddos_spp_setting/".format(spp_name=spp)
+    if resource_name in resources:
+        resource_name = "SPP: {0}".format(resource_name)
+    endpoint = "/api/v2/spp/{spp_name}/{resource_name}/".format(spp_name=spp,
+                                                                resource_name=RESOURCE_MAPPING.get(resource_name,
+                                                                                                   resource_name))
     api_response = ddos_conn.make_request(method='PUT', endpoint=endpoint, data=rq)
     return {"status": "success",
-            "message": "{0} updated successfully.".format(resource_name)} if api_response == '' else {
-        "status": "failed", "message": "Failed to update {0}.".format(resource_name)}
+            "message": "{0} updated successfully.".format(params.get('resource_name'))} if api_response == '' else {
+        "status": "failed", "message": "Failed to update {0}.".format(params.get('resource_name'))}

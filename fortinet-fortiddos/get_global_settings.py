@@ -11,7 +11,6 @@ logger = get_logger(LOGGER_NAME)
 
 
 def get_global_settings(config, params):
-    logger.info("params: {}".format(params))
     resource_name = params.get('resource_name', None)
     if not resource_name:
         resource_name = 'ddos_global_setting'
