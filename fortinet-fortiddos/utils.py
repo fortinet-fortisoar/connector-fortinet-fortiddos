@@ -10,15 +10,8 @@ import json
 
 logger = get_logger(LOGGER_NAME)
 
-error_msg = {
-    401: 'Authentication failed due to invalid credentials',
-    404: 'Not Found',
-    "ssl_error": 'SSL certificate validation failed',
-    'time_out': 'The request timed out while trying to connect to the remote server',
-}
 
-
-class MakeRestApiCall():
+class MakeRestApiCall:
     def __init__(self, config):
         self.server_url = config.get('server_address').strip().strip('/')
         if not self.server_url.startswith('http') or not self.server_url.startswith('https'):
@@ -43,8 +36,10 @@ class MakeRestApiCall():
                 self.headers["Accept"] = "application/json"
             if headers: headers.update(self.headers)
             url = self.server_url + endpoint
-            logger.info('Requested url:{0}'.format(url))
-            response = requests.request(method=method, url=url, headers=headers if headers else self.headers, data=data, json=json_data,
+            logger.debug('Requested url:{0}'.format(url))
+            logger.debug('Payload data:{0}'.format(data))
+            response = requests.request(method=method, url=url, headers=headers if headers else self.headers, data=data,
+                                        json=json_data,
                                         params=params, verify=self.verify_ssl)
             if response.ok:
                 try:
@@ -62,7 +57,6 @@ class MakeRestApiCall():
             logger.exception('{0}'.format(e))
             raise ConnectorError('{0}'.format(error_msg.get('time_out')))
         except Exception as e:
-            logger.error('{0}'.format(e))
             raise ConnectorError('{0}'.format(e))
 
     def build_query(self, params, make_str=False):

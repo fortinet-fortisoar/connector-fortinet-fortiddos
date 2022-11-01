@@ -4,7 +4,7 @@
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
 from connectors.core.connector import get_logger, ConnectorError
-from .constants import LOGGER_NAME, RESOURCE_MAPPING
+from .constants import LOGGER_NAME, RESOURCE_MAPPING, resources
 from .utils import MakeRestApiCall
 
 logger = get_logger(LOGGER_NAME)
@@ -12,7 +12,6 @@ logger = get_logger(LOGGER_NAME)
 
 def get_spp_settings(config, params):
     resource_name = params.get('resource_name')
-    resources = ["Access Control List", "Address Config", "Address Config IPv6"]
     if resource_name in resources:
         resource_name = "SPP: {0}".format(resource_name)
     spp = params.get('spp')
