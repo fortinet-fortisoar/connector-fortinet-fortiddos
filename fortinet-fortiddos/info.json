@@ -1346,7 +1346,25 @@
           }
         },
         {
-          "condition": "{{this['subtype'] === 'top_attacks' || this['subtype'] === 'top_attacked_dns_servers' || this['subtype'] === 'top_attacked_dns_anomalies'}}",
+          "condition": "{{this['subtype'] === 'top_attacks'}}",
+          "output_schema": {
+            "data": [
+              {
+                "SPP": "",
+                "Drops": "",
+                "Attack": "",
+                "Events": "",
+                "spp-id": "",
+                "Direction": ""
+              }
+            ],
+            "total": "",
+            "success": "",
+            "message": ""
+          }
+        },
+        {
+          "condition": "{{this['subtype'] === 'top_attacked_dns_servers' || this['subtype'] === 'top_attacked_dns_anomalies'}}",
           "output_schema": {}
         }
       ]
@@ -1971,7 +1989,10 @@
           "description": "Specify the class for which you want to delete a legitimate DNS query that is present in the FortiDDoS appliance."
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "status": "",
+        "message": ""
+      }
     },
     {
       "title": "Generate BGP Flowspec",
