@@ -37,7 +37,6 @@ class MakeRestApiCall:
             if headers: headers.update(self.headers)
             url = self.server_url + endpoint
             logger.debug('Requested url:{0}'.format(url))
-            logger.debug('Payload data:{0}'.format(data))
             response = requests.request(method=method, url=url, headers=headers if headers else self.headers, data=data,
                                         json=json_data,
                                         params=params, verify=self.verify_ssl)

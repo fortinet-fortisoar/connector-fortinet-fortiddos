@@ -55,7 +55,7 @@
     {
       "title": "Get Protection Profiles",
       "operation": "get_spp_settings",
-      "description": "Retrieves the Protection Profiles details from the FortiDDoS appliance based on the Service Protection Profile (SPP) name and resource name you have specified.",
+      "description": "Retrieves the Protection Profiles details from the FortiDDoS appliance based on the Service Protection Profile (SPP) name and resource name you have specified. The protection profiles settings located at: Protection Profiles section.",
       "category": "investigation",
       "annotation": "get_spp_settings",
       "enabled": true,
@@ -183,9 +183,9 @@
       ]
     },
     {
-      "title": "Update SPP Settings",
+      "title": "Update Protection Profiles Settings",
       "operation": "update_service_protection_profile_settings",
-      "description": "Updates the SPP settings based on the SPP name, resource name, and resource arguments you have specified.",
+      "description": "Updates the protection profiles settings based on the SPP name, resource name, and resource arguments you have specified. The protection profiles settings located at: Protection Profiles section.",
       "category": "remediation",
       "annotation": "update_service_protection_profile_settings",
       "enabled": true,
@@ -417,7 +417,7 @@
     {
       "title": "Get Global Settings Address",
       "operation": "get_global_settings_address",
-      "description": "Retrieves the global setting address of the FortiDDoS appliance based on the resource name you have specified.",
+      "description": "Retrieves the global setting address of the FortiDDoS appliance based on the resource name you have specified. The global settings address is located at: Global Settings > Address.",
       "category": "investigation",
       "annotation": "get_global_settings",
       "enabled": true,
@@ -559,7 +559,7 @@
     {
       "title": "Get Proxy IP",
       "operation": "get_proxy_ip",
-      "description": "Retrieves the proxy IP details of the FortiDDoS appliance.",
+      "description": "Retrieves the proxy IP details of the FortiDDoS appliance. The proxy IP located at: Global Settings > Proxy IP.",
       "category": "investigation",
       "annotation": "get_global_settings",
       "enabled": true,
@@ -586,7 +586,7 @@
     {
       "title": "Get Proxy IP Policy",
       "operation": "get_proxy_ip_policy",
-      "description": "Retrieves the proxy IP policy details of the FortiDDoS appliance.",
+      "description": "Retrieves the proxy IP policy details of the FortiDDoS appliance. The proxy IP policy located at: Global Settings > Proxy IP Policy.",
       "category": "investigation",
       "annotation": "get_global_settings",
       "enabled": true,
@@ -601,7 +601,7 @@
     {
       "title": "Get Do Not Track Policy",
       "operation": "get_do_not_track_policy",
-      "description": "Retrieves the 'do not track policy' settings of the FortiDDoS appliance based on the resource name you have specified.",
+      "description": "Retrieves the 'do not track policy' settings of the FortiDDoS appliance based on the resource name you have specified. The do not track policy located at: Global Settings > Do Not Track Policy.",
       "category": "investigation",
       "annotation": "get_global_settings",
       "enabled": true,
@@ -637,7 +637,7 @@
     {
       "title": "Get Access Control List",
       "operation": "get_global_acl",
-      "description": "Retrieves the access control list details of global settings from the FortiDDoS appliance.",
+      "description": "Retrieves the access control list details of global settings from the FortiDDoS appliance. The access control list located at: Global Settings > Access Control List.",
       "category": "investigation",
       "annotation": "get_global_settings",
       "enabled": true,
@@ -716,7 +716,7 @@
     {
       "title": "Get Bypass MAC",
       "operation": "get_bypass_mac",
-      "description": "Retrieves the bypass MAC details of the FortiDDoS appliance.",
+      "description": "Retrieves the bypass MAC details of the FortiDDoS appliance. The bypass MAC details are located at: Global Settings > Bypass MAC.",
       "category": "investigation",
       "annotation": "get_global_settings",
       "enabled": true,
@@ -736,7 +736,7 @@
     {
       "title": "Get System Settings",
       "operation": "get_system_settings",
-      "description": "Retrieves the system settings information from FortiDDoS based on the resource name you have specified.",
+      "description": "Retrieves the system settings information from FortiDDoS based on the resource name you have specified. The system settings details are located at: System.",
       "category": "investigation",
       "annotation": "get_system_settings",
       "enabled": true,
@@ -772,6 +772,7 @@
                   "DNS",
                   "Static Route"
                 ],
+                "tooltip": "System > Network",
                 "description": "Select the name of the resource whose system settings you want to retrieve from FortiDDoS. You can choose from the following options: Interface, DNS, or Static Route."
               }
             ],
@@ -789,6 +790,7 @@
                   "Access Profile",
                   "Settings"
                 ],
+                "tooltip": "System > Admin",
                 "description": "Select the name of the resource whose system settings you want to retrieve from FortiDDoS. You can choose from the following options: Admin User, Access Profile, or Settings."
               }
             ],
@@ -806,6 +808,7 @@
                   "Auth LDAP",
                   "Auth TACACS+"
                 ],
+                "tooltip": "System > Authentication",
                 "description": "Select the name of the resource whose system settings you want to retrieve from FortiDDoS. You can choose from the following options: Auth Radius, Auth LDAP, Auth TACACS+"
               }
             ],
@@ -1121,7 +1124,7 @@
     {
       "title": "Get Log Settings",
       "operation": "get_log_settings",
-      "description": "Retrieves log information from the FortiDDoS appliance based on the resource name you have specified.",
+      "description": "Retrieves log information from the FortiDDoS appliance based on the resource name you have specified. The log settings details are located at: Log & Report > Log Configuration.",
       "category": "investigation",
       "annotation": "get_log_settings",
       "enabled": true,
@@ -1200,7 +1203,7 @@
     {
       "title": "Get Attack Information",
       "operation": "get_attack_information",
-      "description": "Retrieves attack information from FortiDDoS based on the SPP name, attack subtype, direction, and period you have specified.",
+      "description": "Retrieves attack information from FortiDDoS based on the SPP name, attack subtype, direction, and period you have specified. The attack information located at: Log & Report > Executive Summary.",
       "category": "investigation",
       "annotation": "get_attack_information",
       "enabled": true,
@@ -1372,7 +1375,7 @@
     {
       "title": "Add Distress ACL",
       "operation": "add_distress_acl",
-      "description": "Adds a new Distress ACL to the FortiDDoS appliance based on the Mkey, destination, and other input parameters you have specified.",
+      "description": "Adds a new Distress ACL to the FortiDDoS appliance based on the Mkey, destination, and other input parameters you have specified. The distress ACL located at: Global Settings > Access Control List > Advanced Settings > Distress ACL.",
       "category": "remediation",
       "annotation": "add_distress_acl",
       "enabled": true,
@@ -1404,12 +1407,12 @@
           "visible": true,
           "editable": true,
           "options": [
-            "ip-netmask-ipv4",
-            "all"
+            "IPv4 Netmask",
+            "All"
           ],
-          "value": "all",
+          "value": "All",
           "onchange": {
-            "ip-netmask-ipv4": [
+            "IPv4 Netmask": [
               {
                 "title": "Destination IPv4 Netmask",
                 "type": "text",
@@ -1422,7 +1425,7 @@
                 "description": "Specify the destination IPv4 Netmask to add to the new Distress ACL in the FortiDDoS. Example: 192.3.2.5/24"
               }
             ],
-            "all": [
+            "All": [
               {
                 "title": "SPP Name",
                 "type": "text",
@@ -1432,17 +1435,6 @@
                 "editable": true,
                 "value": "SPP-0",
                 "description": "Specify the SPP name to add to the new Distress ACL in the FortiDDoS."
-              },
-              {
-                "title": "Destination IPv4 Netmask",
-                "type": "text",
-                "name": "destination-ipv4-netmask",
-                "required": false,
-                "visible": true,
-                "editable": true,
-                "value": "0.0.0.0/0",
-                "tooltip": "Example: 192.3.2.5/24",
-                "description": "Specify the destination IPv4 Netmask to add to the new Distress ACL in the FortiDDoS. Example: 192.3.2.5/24"
               }
             ]
           },
@@ -1688,7 +1680,7 @@
     {
       "title": "Delete Distress ACL",
       "operation": "delete_distress_acl",
-      "description": "Deletes a specific Distress ACL from the FortiDDoS appliance based on the name of the distress ACL you have specified.",
+      "description": "Deletes a specific Distress ACL from the FortiDDoS appliance based on the name of the distress ACL you have specified. The distress ACL located at: Global Settings > Access Control List > Advanced Settings > Distress ACL.",
       "category": "remediation",
       "annotation": "delete_distress_acl",
       "enabled": true,
@@ -1855,7 +1847,7 @@
     {
       "title": "Get Service Protection Profile Policy",
       "operation": "get_service_protection_profile_policy",
-      "description": "Retrieves a list of all Service Protection Profile Policies from the FortiDDoS appliance.",
+      "description": "Retrieves a list of all Service Protection Profile Policies from the FortiDDoS appliance. The service protection profile policy details are located at: Global Settings > Service Protection Profiles > SPP Policy.",
       "category": "investigation",
       "annotation": "get_service_protection_profile_policy",
       "enabled": true,
@@ -1885,7 +1877,7 @@
     {
       "title": "Delete Service Protection Profile Policy",
       "operation": "delete_service_protection_profile_policy",
-      "description": "Deletes a specific Service Protection Profile Policy from the FortiDDoS appliance based on the name of the SPP policy you have specified.",
+      "description": "Deletes a specific Service Protection Profile Policy from the FortiDDoS appliance based on the name of the SPP policy you have specified. The service protection profile policy details are located at: Global Settings > Service Protection Profiles > SPP Policy.",
       "category": "remediation",
       "annotation": "delete_service_protection_profile_policy",
       "enabled": true,
@@ -1908,7 +1900,7 @@
     {
       "title": "Add Legitimate DNS Query",
       "operation": "add_lq",
-      "description": "Adds a new legitimate DNS Query to the FortiDDoS appliance based on the query, type, and other input parameters you have specified.",
+      "description": "Adds a new legitimate DNS Query to the FortiDDoS appliance based on the query, type, and other input parameters you have specified. The legitimate DNS query located at: Global Settings > Legitimate DNS Queries",
       "category": "remediation",
       "annotation": "add_lq",
       "enabled": true,
@@ -1954,7 +1946,7 @@
     {
       "title": "Delete Legitimate DNS Query",
       "operation": "delete_lq",
-      "description": "Deletes a specific legitimate DNS query from the FortiDDoS appliance based on the domain, type, and class you have specified.",
+      "description": "Deletes a specific legitimate DNS query from the FortiDDoS appliance based on the domain, type, and class you have specified. The legitimate DNS query located at: Global Settings > Legitimate DNS Queries",
       "category": "remediation",
       "annotation": "delete_lq",
       "enabled": true,
@@ -1997,7 +1989,7 @@
     {
       "title": "Generate BGP Flowspec",
       "operation": "generate_bgp_flowspec",
-      "description": "Generate BGP flow specifications based on the vendor name, destination under attack, and threshold you have specified.",
+      "description": "Generate BGP flow specifications based on the vendor name, destination under attack, and threshold you have specified. The generated BGP flowspec located at: Log & Report > Flowspec.",
       "category": "containment",
       "annotation": "generate_bgp_flowspec",
       "enabled": true,
