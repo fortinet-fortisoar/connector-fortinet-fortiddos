@@ -5,7 +5,7 @@
   Copyright end """
 LOGGER_NAME = 'fortinet-fortiddos'
 CONVERT_LIST = ['alt-spp-enable', 'acl-enable', 'destination-port', 'dscp', 'fragment', 'protocol', 'source-ip',
-                'source-port', 'tcp-control-flag', 'ttl']
+                'source-port', 'tcp-control-flag', 'ttl', 'destination']
 CONVERT_STR = ['destination-port-end', 'threshold-per-million', 'protocol-number', 'ttl-value', 'class', 'threshold',
                'subnet-id', 'destination-port-start', 'source-port-start', 'source-port-end', 'dscp-value']
 PARAM_MAPPING = {
@@ -17,8 +17,8 @@ PARAM_MAPPING = {
     'any-fragment': '4',
 
     # destination
-    'ip-netmask-ipv4': '1',
-    'all': '4'
+    'IPv4 Netmask': 'ip-netmask-v4',
+    'All': 'all'
 }
 RESOURCE_MAPPING = {
     #Protection Profiles Resource Mapping
